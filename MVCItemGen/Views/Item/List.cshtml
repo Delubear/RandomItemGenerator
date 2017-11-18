@@ -1,0 +1,11 @@
+﻿@model MVCItemGen.ViewModels.ItemListViewModel
+
+<h2>List</h2>
+@foreach(var item in Model.ItemList)
+{
+    <h3>Item ID: @item.Id</h3>
+    <h4>Name:    @item.Name</h4>
+    <h4>Value:   @item.Value</h4>
+
+}
+
