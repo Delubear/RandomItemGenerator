@@ -11,7 +11,6 @@ namespace MVCItemGen.Controllers
     public class ItemController : Controller
     {
         private readonly IBaseItemRepository _baseItemRespository;
-
         public ItemController(IBaseItemRepository baseItemRepository)
         {
             _baseItemRespository = baseItemRepository;
@@ -28,10 +27,5 @@ namespace MVCItemGen.Controllers
                 ItemList = items
             });
         }
-
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
     }
 }

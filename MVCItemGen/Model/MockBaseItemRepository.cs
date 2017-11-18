@@ -13,8 +13,8 @@ namespace MVCItemGen.Model
             {
                 return new List<BaseItemModel>
                 {
-                    new BaseItemModel{Id = 1, Name = "Test Item 1", Value = 55},
-                    new BaseItemModel{Id = 2, Name = "Test 2", Value = 10}
+                    new WeaponModel{Id = 1, Name = "Test Item 1"},
+                    new WeaponModel{Id = 2, Name = "Test 2"}
 
                 };
             }
