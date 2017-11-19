@@ -1,7 +1,7 @@
 ﻿@model MVCItemGen.ViewModels.ItemListViewModel
 
 <h2>List</h2>
-@foreach(var item in Model.ItemList)
+@foreach (var item in Model.ItemList)
 {
     <h3>Name: @item.Name</h3>
     <h4>Item Type: @item.ItemType</h4>
@@ -16,5 +16,33 @@
         }
     </h4>
 
-}
 
+    @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
+    {
+        <h4>
+            Damage: @item.GetType().GetProperty("DamageValue").GetValue(item)
+        </h4>
+        <h4>
+            Damage Type: @item.GetType().GetProperty("DamageType").GetValue(item)
+        </h4>
+    }
+
+    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
+    {
+        <h4>
+            Armor: @item.GetType().GetProperty("ArmorValue").GetValue(item)
+        </h4>
+        <h4>
+            Armor Type: @item.GetType().GetProperty("ArmorType").GetValue(item)
+        </h4>
+    }
+
+
+    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
+    {
+        <h4>
+            Effects: @item.GetType().GetProperty("Effect").GetValue(item)
+        </h4>
+    }
+
+}

@@ -16,11 +16,11 @@ namespace MVCItemGen.Model
             itemBaseName = g.itemBaseName;
         }
 
-        public IEnumerable<BaseItemModel> BaseItemRepository 
+        public IEnumerable<Item> BaseItemRepository 
         {
             get
             {
-                return new List<BaseItemModel>
+                return new List<Item>
                 {
                     new Weapons(itemBaseName),
                     new Weapons(itemBaseName)

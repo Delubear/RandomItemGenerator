@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVCItemGen.Model;
 using MVCItemGen.ViewModels;
@@ -19,7 +17,7 @@ namespace MVCItemGen.Controllers
 
         public ViewResult List()
         {
-            IEnumerable<BaseItemModel> items;
+            IEnumerable<Item> items;
 
             items = _baseItemRespository.BaseItemRepository.OrderBy( i => i.Name);
 

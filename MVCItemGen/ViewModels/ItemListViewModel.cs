@@ -9,7 +9,7 @@ namespace MVCItemGen.ViewModels
 {
     public class ItemListViewModel
     {
-        public IEnumerable<BaseItemModel> ItemList { get; set; }
+        public IEnumerable<Item> ItemList { get; set; }
 
     }
 }
