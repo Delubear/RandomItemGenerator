@@ -1,4 +1,5 @@
 ﻿using MVCItemGen.Model;
+using RPGItemGenerator.ItemGeneration;
 using System;
 using System.Collections.Generic;
 using System.Linq;

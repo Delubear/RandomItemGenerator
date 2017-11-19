@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVCItemGen.Model;
 using MVCItemGen.ViewModels;
+using RPGItemGenerator.ItemGeneration;
 
 namespace MVCItemGen.Controllers
 {
@@ -20,7 +21,7 @@ namespace MVCItemGen.Controllers
         {
             IEnumerable<BaseItemModel> items;
 
-            items = _baseItemRespository.BaseItemRepository.OrderBy( i => i.Id);
+            items = _baseItemRespository.BaseItemRepository.OrderBy( i => i.Name);
 
             return View(new ItemListViewModel
             {
