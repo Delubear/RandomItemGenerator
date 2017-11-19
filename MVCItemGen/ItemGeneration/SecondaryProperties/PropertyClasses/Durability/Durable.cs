@@ -13,8 +13,8 @@ namespace RPGItemGenerator.ItemGeneration
         public override void Execute(BaseItemModel item)
         {
             item.PrefixList.Add("Durable" + " ");
-            item.MaxDurability *= (int)(item.MaxDurability * 1.3);
-            item.CurrentDurability *= (int)(item.CurrentDurability * 1.3);
+            item.MaxDurability = (int)(item.MaxDurability * 1.3);
+            item.CurrentDurability = (int)(item.CurrentDurability * 1.3);
             item.Value = (int)(item.Value *1.1);
             if(item.ItemType == ItemTypes.Armor)
             {

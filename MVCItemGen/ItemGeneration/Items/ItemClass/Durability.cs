@@ -34,16 +34,27 @@ namespace RPGItemGenerator.ItemGeneration
             }
 
             int x = (int)GetNewGaussianCurve(median, deviation);
-            if (x < 15) { x = 15; }
+            if (x < 15)
+            {
+                x = 15;
+            }
+
             MaxDurability = x;
 
             int _rarityModifier = (int)Rarity;
-            if(_rarityModifier == 0) { _rarityModifier = 1; }
+            if(_rarityModifier == 0)
+            {
+                _rarityModifier = 1;
+            }
 
             double y = GetNewGaussianCurve((MaxDurability / 2), (MaxDurability / 5));
             y = GetNewGaussianCurve(y, (int)Rarity * 0.1);
 
-            if(y < 1) { y = 1; }
+            if(y < 1)
+            {
+                y = 1;
+            }
+
             CurrentDurability = (int)y;
 
             AdjustValueBasedOnDurability();

@@ -3,10 +3,18 @@
 <h2>List</h2>
 @foreach(var item in Model.ItemList)
 {
-    <h3>Item ID: @item.ItemType</h3>
-    <h4>Name:    @item.Name</h4>
+    <h3>Name: @item.Name</h3>
+    <h4>Item Type: @item.ItemType</h4>
+    <h4>Rarity:    @item.Rarity</h4>
     <h4>Value:   @item.Value</h4>
     <h4>Durability:  @item.CurrentDurability / @item.MaxDurability</h4>
+    <h4>
+        Properties: 
+        @foreach (var prop in item.SecondaryProps.Values)
+        {
+            <text> @prop.PropDescription </text>
+        }
+    </h4>
 
 }
 

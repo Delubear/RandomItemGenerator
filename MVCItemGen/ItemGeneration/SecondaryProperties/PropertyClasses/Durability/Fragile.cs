@@ -22,8 +22,8 @@ namespace RPGItemGenerator.ItemGeneration
                 item.SuffixList.Add(" " + "of Frailty");
             }
 
-            item.MaxDurability *= (int)(item.MaxDurability * 0.75);
-            item.CurrentDurability *= (int)(item.CurrentDurability * 0.75);
+            item.MaxDurability = (int)(item.MaxDurability * 0.75);
+            item.CurrentDurability = (int)(item.CurrentDurability * 0.75);
             item.Value = (int)(item.Value *0.85);
 
             if(item.ItemType == ItemTypes.Armor)
