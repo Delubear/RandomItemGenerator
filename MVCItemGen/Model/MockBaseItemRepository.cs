@@ -1,8 +1,5 @@
 ﻿using RPGItemGenerator.ItemGeneration;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MVCItemGen.Model
 {
@@ -23,7 +20,11 @@ namespace MVCItemGen.Model
                 return new List<Item>
                 {
                     new Weapons(itemBaseName),
-                    new Weapons(itemBaseName)
+                    new Weapons(itemBaseName),
+                    new Armor(itemBaseName),
+                    new Armor(itemBaseName),
+                    new Potions(itemBaseName),
+                    new Potions(itemBaseName),
 
                 };
             }

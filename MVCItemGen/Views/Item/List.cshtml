@@ -3,46 +3,42 @@
 <h2>List</h2>
 @foreach (var item in Model.ItemList)
 {
-    <h3>Name: @item.Name</h3>
-    <h4>Item Type: @item.ItemType</h4>
-    <h4>Rarity:    @item.Rarity</h4>
-    <h4>Value:   @item.Value</h4>
-    <h4>Durability:  @item.CurrentDurability / @item.MaxDurability</h4>
-    <h4>
-        Properties: 
+    <h3>
+        Name: @item.Name                                       <br />
+        Item Type: @item.ItemType                                  <br />
+        Rarity:    @item.Rarity                                    <br />
+        Value:   @item.Value                                       <br />
+        Durability:  @item.CurrentDurability / @item.MaxDurability <br />
+
+        Properties:
         @foreach (var prop in item.SecondaryProps.Values)
         {
             <text> @prop.PropDescription </text>
         }
-    </h4>
+
+        <br />
+
+        @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
+        {
+
+            <text>Damage: @item.GetType().GetProperty("DamageValue").GetValue(item)</text>
+            <br />
+            <text>Damage Type: @item.GetType().GetProperty("DamageType").GetValue(item)</text>
+        }
+
+        else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
+        {
+
+            <text>Armor: @item.GetType().GetProperty("ArmorValue").GetValue(item)</text>
+            <br />
+            <text>Armor Type: @item.GetType().GetProperty("ArmorType").GetValue(item)</text>
+        }
 
 
-    @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
-    {
-        <h4>
-            Damage: @item.GetType().GetProperty("DamageValue").GetValue(item)
-        </h4>
-        <h4>
-            Damage Type: @item.GetType().GetProperty("DamageType").GetValue(item)
-        </h4>
-    }
-
-    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
-    {
-        <h4>
-            Armor: @item.GetType().GetProperty("ArmorValue").GetValue(item)
-        </h4>
-        <h4>
-            Armor Type: @item.GetType().GetProperty("ArmorType").GetValue(item)
-        </h4>
-    }
-
-
-    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
-    {
-        <h4>
-            Effects: @item.GetType().GetProperty("Effect").GetValue(item)
-        </h4>
-    }
-
+        else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
+        {
+            <text>Effects: @item.GetType().GetProperty("Effect").GetValue(item)</text>
+            <br />
+        }
+    </h3>
 }
