@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://delubear.com/MVCItemGen",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:63507/",
       "sslPort": 0
