@@ -18,9 +18,7 @@ namespace MVCItemGen.Controllers
         public ActionResult List()
         {
             List<Item> items;
-
             items = _baseItemRespository.BaseItemRepository; 
-
             return View(new ItemListViewModel()); 
         }
 
