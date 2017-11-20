@@ -1,5 +1,6 @@
 ﻿using RPGItemGenerator.ItemGeneration;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MVCItemGen.Model
 {
@@ -11,20 +12,25 @@ namespace MVCItemGen.Model
             var g = new RunItemGen();
             g.GenerateLists();
             itemBaseName = g.itemBaseName;
+        }     
+
+        public Item AddRandomItem()
+        {
+            return new Weapons(itemBaseName);
         }
 
-        public IEnumerable<Item> BaseItemRepository 
+        public List<Item> BaseItemRepository 
         {
             get
             {
                 return new List<Item>
                 {
-                    new Weapons(itemBaseName),
-                    new Weapons(itemBaseName),
-                    new Armor(itemBaseName),
-                    new Armor(itemBaseName),
-                    new Potions(itemBaseName),
-                    new Potions(itemBaseName),
+                    //new Weapons(itemBaseName),
+                    //new Weapons(itemBaseName),
+                    //new Armor(itemBaseName),
+                    //new Armor(itemBaseName),
+                    //new Potions(itemBaseName),
+                    //new Potions(itemBaseName),
 
                 };
             }
