@@ -5,7 +5,7 @@ namespace RPGItemGenerator.ItemGeneration
 {
     public class Potions : Item
     {
-        private string _effect = "Effect: ";
+        private string _effect = "";
         public string Effect
         {
             get { return _effect; }

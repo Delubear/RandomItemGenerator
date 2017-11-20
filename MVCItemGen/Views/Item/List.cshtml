@@ -1,8 +1,14 @@
-﻿@model MVCItemGen.ViewModels.ItemListViewModel
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+@model MVCItemGen.ViewModels.ItemListViewModel
+
+    <ul>
+        <li><a href="/Item/List">Home</a></li>
+    </ul>
 
 @using (Html.BeginForm())
 {
     <text>Times to run: </text>  @Html.TextBoxFor(x => x.Amount);
-    <input type="submit" />
+    <input type="submit" value="Generate"/>
 }
 

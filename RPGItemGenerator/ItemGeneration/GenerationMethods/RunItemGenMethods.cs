@@ -57,7 +57,7 @@ namespace RPGItemGenerator.ItemGeneration
             }
             else if (testItem.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
             {
-                sb.AppendLine($"{testItem.GetType().GetProperty("Effect").GetValue(testItem)}");
+                sb.AppendLine($"Effects: {testItem.GetType().GetProperty("Effect").GetValue(testItem)}");
             }
             sb.AppendLine();          
         }

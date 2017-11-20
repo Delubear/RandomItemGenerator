@@ -1,44 +1,85 @@
-﻿@model MVCItemGen.ViewModels.ItemListViewModel
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
 
+@model MVCItemGen.ViewModels.ItemListViewModel
+
+<ul>
+    <li><a href="/Item/List">Home</a></li>
+    <li><a href="javascript:window.location.href=window.location.href">Refresh Items</a></li>
+    @*<li><input type="button" value="Home" onclick="@("location.href='/Item/List'")" /></li>
+        <li><input type="button" value="Refresh Items" onclick="@("location.href='javascript:window.location.href=window.location.href'")" /></li>*@
+    @*<li><a href="javascript:window.location.href=window.location.href">Refresh Items</a></li>*@
+
+</ul>
 
 <h2>List</h2>
 
 @foreach (var item in Model.ItemList)
 {
-    <h3>
-    Name: @item.Name <br />
-    Item Type: @item.ItemType <br />
-    Rarity:    @item.Rarity <br />
-    Value:   @item.Value <br />
-    Durability:  @item.CurrentDurability / @item.MaxDurability <br />
+    <div>       
+        <table border="0">            
+            <tr>                
+                <th scope="row">Name:</th>
+                <td>@item.Name</td>
+            </tr>
+            <tr>
+                <th scope="row">Item Type:</th>
+                <td>@item.ItemType</td>
+            </tr>
+            <tr>
+                <th scope="row">Rarity:</th>
+                <td>@item.Rarity</td>
+            </tr>
+            <tr>
+                <th scope="row">Value:</th>
+                <td>@item.Value</td>
+            </tr>            
+            <tr>
+                <th scope="row"> Durability:</th>
+                <td>@item.CurrentDurability / @item.MaxDurability </td>
+            </tr>
+            <tr>
+                
+                <th scope="row">Properties:</th>
+                <td>
+                    @foreach (var prop in item.SecondaryProps.Values)
+                    {
+                        <text>@prop.PropDescription </text>
+                    }
+                </td>
+            </tr>
 
-    Properties:
-    @foreach (var prop in item.SecondaryProps.Values)
-    {
-         <text> @prop.PropDescription </text>
-    }
+            @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
+            {
+            <tr>
+                <th scope="row">Damage:</th> 
+                <td>@item.GetType().GetProperty("DamageValue").GetValue(item)</td>
+            </tr>
+            <tr>
+                <th scope="row">Damage Type:</th> 
+                <td>@item.GetType().GetProperty("DamageType").GetValue(item)</td> 
+            </tr>
+            }
 
-    <br />
+            else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
+            {
+            <tr>
+                <th scope="row">Armor:</th> 
+                <td>@item.GetType().GetProperty("ArmorValue").GetValue(item)</td>
+            </tr>
+            <tr>
+                <th scope="row">Armor Type:</th> 
+                <td>@item.GetType().GetProperty("ArmorType").GetValue(item)</td>
+            </tr>
+            }
 
-    @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
-    {
-        <text> Damage: @item.GetType().GetProperty("DamageValue").GetValue(item) </text>
+            else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
+            {
+            <tr>
+                <th scope="row">Effects:</th>
+                <td>@item.GetType().GetProperty("Effect").GetValue(item)</td>
+            </tr>
+            }
+        </table>
         <br />
-        <text> Damage Type: @item.GetType().GetProperty("DamageType").GetValue(item) </text>
-    }
-
-    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
-    {
-
-        <text> Armor: @item.GetType().GetProperty("ArmorValue").GetValue(item) </text>
-        <br />
-        <text> Armor Type: @item.GetType().GetProperty("ArmorType").GetValue(item) </text>
-    }
-
-    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
-    {
-        <text> Effects: @item.GetType().GetProperty("Effect").GetValue(item) </text>
-        <br />
-    }
-    </h3>
+    </div>
 }

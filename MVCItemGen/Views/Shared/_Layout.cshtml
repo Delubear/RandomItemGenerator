@@ -4,8 +4,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Item Generator</title>
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body>  
+        @*<ul>
+
+            @*<li><input type="button" value="Home" onclick="@("location.href='/Item/List'")" /></li>
+            <li><input type="button" value="Home" onclick="@("location.href='/Item/List'")" /></li>*@
+            
+            @*<li>@Html.ActionLink("List", "List", "Item", new {@class = "link-button" })  </li>*@
+        @*</ul>*@
     <div>
         @RenderBody()
     </div>

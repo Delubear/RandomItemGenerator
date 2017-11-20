@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="DSharpPlus" Version="3.2.3" />
     <PackageReference Include="DSharpPlus.CommandsNext" Version="3.2.3" />
     <PackageReference Include="jQuery" Version="3.2.1" />
@@ -22,6 +18,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RPGItemGenerator\RPGItemGenerator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\site.css" />
   </ItemGroup>
 
 </Project>
