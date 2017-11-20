@@ -15,42 +15,30 @@
     Properties:
     @foreach (var prop in item.SecondaryProps.Values)
     {
-            <text> @prop.PropDescription </text>
+         <text> @prop.PropDescription </text>
     }
 
     <br />
 
     @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
     {
-
-            <text> Damage: @item.GetType().GetProperty("DamageValue").GetValue(item) </text>
-
-
-               <br />
-
-
-               <text> Damage Type: @item.GetType().GetProperty("DamageType").GetValue(item) </text>
+        <text> Damage: @item.GetType().GetProperty("DamageValue").GetValue(item) </text>
+        <br />
+        <text> Damage Type: @item.GetType().GetProperty("DamageType").GetValue(item) </text>
     }
 
     else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
     {
 
-            <text> Armor: @item.GetType().GetProperty("ArmorValue").GetValue(item) </text>
-
-
-               <br />
-
-
-               <text> Armor Type: @item.GetType().GetProperty("ArmorType").GetValue(item) </text>
+        <text> Armor: @item.GetType().GetProperty("ArmorValue").GetValue(item) </text>
+        <br />
+        <text> Armor Type: @item.GetType().GetProperty("ArmorType").GetValue(item) </text>
     }
-
 
     else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
     {
-            <text> Effects: @item.GetType().GetProperty("Effect").GetValue(item) </text>
-
-
-               <br />
+        <text> Effects: @item.GetType().GetProperty("Effect").GetValue(item) </text>
+        <br />
     }
     </h3>
 }

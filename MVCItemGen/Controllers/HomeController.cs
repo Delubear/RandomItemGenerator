@@ -10,7 +10,7 @@ namespace MVCItemGen.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("List", "Item");
         }
     }
 }
