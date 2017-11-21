@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EmbeddedResource Include="Discord\discordsettings.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
