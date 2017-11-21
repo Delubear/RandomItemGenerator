@@ -2,6 +2,7 @@
 using DSharpPlus.CommandsNext;
 using DSharpPlus.Entities;
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -17,22 +18,20 @@ namespace RPGItemGenerator
         public static DiscordClient discord;
         static CommandsNextModule commands;
 
-        static async Task MainAsync(string[] args)
+        class JSONClass
         {
-            string discToken;
-            var assembly = Assembly.GetExecutingAssembly();
-            var resource = "RPGItemGenerator.discordsettings.json";
-            using (Stream stream = assembly.GetManifestResourceStream(resource))
-                using(StreamReader reader = new StreamReader(stream))
-            {
-                discToken = reader.ReadToEnd();
-            }
+            public string BotKey { get; set; }
+            public string Value  { get; set; }
+        }
 
-            //    var token = File.ReadAllText("discordsettings.json");
-            //var code = JsonConvert.DeserializeObject<IList<string>>(token).FirstOrDefault();
+        static async Task MainAsync(string[] args)
+        {                        
+            var token = File.ReadAllText("discordsettings.json");
+            var code  = JsonConvert.DeserializeObject<JSONClass>(token);
+
             discord = new DiscordClient(new DiscordConfiguration
             {
-                Token = discToken,
+                Token = code.BotKey,
                 TokenType = TokenType.Bot,
                 UseInternalLogHandler = true,
                 LogLevel = LogLevel.Debug

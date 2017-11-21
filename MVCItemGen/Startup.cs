@@ -25,8 +25,6 @@ namespace MVCItemGen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //var connection = @"Server=(localsqlserver);Database=MVCItemGen;";
-            //var connection = @"Server=WEB-SERVER\SQLEXPRESS;User Id=bakerc;Password=Sprint00;Initial Catalog=MVCItemGen;Integrated Security=False;Connect Timeout=30;";
 
             services.AddDbContext<ItemDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
             //services.AddDbContext<ItemDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("TestConnection")));
