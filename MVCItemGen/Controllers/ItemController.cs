@@ -17,13 +17,14 @@ namespace MVCItemGen.Controllers
         
         public ActionResult List()
         {
-            List<Item> items;
-            items = _baseItemRespository.BaseItemRepository; 
+            //List<Item> items;
+            //items = _baseItemRespository.BaseItemRepository; 
             return View(new ItemListViewModel()); 
         }
 
         public ViewResult Generate(int amount)
         {
+            _baseItemRespository.Reset();
             //List<Item> items ;            
 
             //items = _baseItemRespository.BaseItemRepository;

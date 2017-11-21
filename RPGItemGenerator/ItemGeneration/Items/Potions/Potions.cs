@@ -13,6 +13,10 @@ namespace RPGItemGenerator.ItemGeneration
             set { _effect = value; }
         }
 
+        public Potions()
+        {
+
+        }
 
         public Potions(Dictionary<string, HashSet<string>> itemBaseName)
         {

@@ -20,6 +20,11 @@ namespace RPGItemGenerator.ItemGeneration
             set { _armorType = value; }
         }
 
+        public Armor()
+        {
+
+        }
+
         public Armor(Dictionary<string, HashSet<string>> itemBaseName)
         {
             ID = new Guid();

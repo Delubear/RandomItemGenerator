@@ -41,6 +41,11 @@ namespace RPGItemGenerator.ItemGeneration
             set { _accuracy = value; }
         }
 
+        public Weapons()
+        {
+
+        }
+
         public Weapons(Dictionary<string, HashSet<string>> itemBaseName)
         {
             ID = new Guid();

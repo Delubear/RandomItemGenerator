@@ -1,13 +1,15 @@
-﻿using RPGItemGenerator.ItemGeneration;
+﻿using Microsoft.EntityFrameworkCore;
+using RPGItemGenerator.ItemGeneration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace MVCItemGen.Model
 {
     public class ItemRepository : IBaseItemRepository
     {
-        private ItemDbContext _itemDbContext;
+        public ItemDbContext _itemDbContext;
 
         Dictionary<string, HashSet<string>> itemBaseName;
 
@@ -53,16 +55,14 @@ namespace MVCItemGen.Model
         {
             get
             {
-                return new List<Item>
-                {
-                    //new Weapons(itemBaseName),
-                    //new Weapons(itemBaseName),
-                    //new Armor(itemBaseName),
-                    //new Armor(itemBaseName),
-                    //new Potions(itemBaseName),
-                    //new Potions(itemBaseName),
-                };
+                return _itemDbContext.items.ToList();
             }
+        }
+
+        public void Reset()
+        {
+            _itemDbContext.RemoveRange(BaseItemRepository);
+            _itemDbContext.SaveChanges();
         }
     }
 }

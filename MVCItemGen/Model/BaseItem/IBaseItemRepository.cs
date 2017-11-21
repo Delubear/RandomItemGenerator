@@ -7,5 +7,6 @@ namespace MVCItemGen.Model
     {
         List<Item> BaseItemRepository { get; }
         void AddRandomItem();
+        void Reset();
     }
 }
