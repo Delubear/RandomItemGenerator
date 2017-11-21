@@ -14,7 +14,8 @@ namespace MVCItemGen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=MVCItemGen.AspNetCore.NewDb;Trusted_Connection=True;";
+            //var connection = @"Server=(localsqlserver);Database=MVCItemGen;";
+            var connection = @"Server=WEB-SERVER\SQLEXPRESS;User Id=bakerc;Password=Sprint00;Initial Catalog=MVCItemGen;Integrated Security=False;Connect Timeout=30;";
             services.AddDbContext<ItemDbContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IBaseItemRepository, ItemRepository>();
         }
