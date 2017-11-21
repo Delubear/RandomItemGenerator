@@ -6,6 +6,6 @@ namespace MVCItemGen.Model
     public interface IBaseItemRepository
     {
         List<Item> BaseItemRepository { get; }
-        Item AddRandomItem();
+        void AddRandomItem();
     }
 }

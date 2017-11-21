@@ -24,14 +24,14 @@ namespace MVCItemGen.Controllers
 
         public ViewResult Generate(int amount)
         {
-            List<Item> items ;            
+            //List<Item> items ;            
 
-            items = _baseItemRespository.BaseItemRepository;
+            //items = _baseItemRespository.BaseItemRepository;
             for(int i = 0; i < amount; i++)
             {
-                items.Add(_baseItemRespository.AddRandomItem());
+                _baseItemRespository.AddRandomItem();
             }
-            return View(new ItemListViewModel { ItemList = items });
+            return View(new ItemListViewModel { ItemList = _baseItemRespository.BaseItemRepository });
         }
         
         [HttpPost]
