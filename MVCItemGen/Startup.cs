@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MVCItemGen.Model;
 
@@ -13,6 +14,8 @@ namespace MVCItemGen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=MVCItemGen.AspNetCore.NewDb;Trusted_Connection=True;";
+            services.AddDbContext<ItemDbContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IBaseItemRepository, ItemRepository>();
         }
 
