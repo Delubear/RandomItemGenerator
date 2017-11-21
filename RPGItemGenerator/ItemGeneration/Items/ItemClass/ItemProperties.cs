@@ -1,12 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using static RPGItemGenerator.ItemGeneration.Enums;
 
 namespace RPGItemGenerator.ItemGeneration
 {
     public abstract partial class Item
     {
-        protected Dictionary<string, HashSet<string>> ItemBaseNames;       
+        protected Dictionary<string, HashSet<string>> ItemBaseNames;
+
+        [Key]
+        private Guid Id;
+        public Guid ID
+        {
+            get { return Id; }
+            set { Id = value; }
+        }
+
 
         private string _name;
         public string Name

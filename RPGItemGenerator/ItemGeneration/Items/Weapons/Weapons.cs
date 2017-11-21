@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using static RPGItemGenerator.ItemGeneration.Enums;
 
 namespace RPGItemGenerator.ItemGeneration
@@ -42,6 +43,7 @@ namespace RPGItemGenerator.ItemGeneration
 
         public Weapons(Dictionary<string, HashSet<string>> itemBaseName)
         {
+            ID = new Guid();
             this.ItemBaseNames = itemBaseName;
             Rarity = GetRarity();
             ItemType = ItemTypes.Weapon;
@@ -58,6 +60,7 @@ namespace RPGItemGenerator.ItemGeneration
         
         public Weapons(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare)
         {
+            ID = new Guid();
             this.ItemBaseNames = itemBaseName;
             Rarity = rare;
             ItemType = ItemTypes.Weapon;

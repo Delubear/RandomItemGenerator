@@ -22,6 +22,7 @@ namespace RPGItemGenerator.ItemGeneration
 
         public Armor(Dictionary<string, HashSet<string>> itemBaseName)
         {
+            ID = new Guid();
             this.ItemBaseNames = itemBaseName;
             Rarity = GetRarity();
             ItemType = ItemTypes.Armor;
@@ -36,6 +37,7 @@ namespace RPGItemGenerator.ItemGeneration
 
         public Armor(Dictionary<string, HashSet<string>> itemBaseName , Rarity rare)
         {
+            ID = new Guid();
             this.ItemBaseNames = itemBaseName;
             Rarity = rare;
             ItemType = ItemTypes.Armor;
