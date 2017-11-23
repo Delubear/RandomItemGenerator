@@ -6,9 +6,35 @@
         <li><a href="/Item/List">Home</a></li>
     </ul>
 
+@*<script language="Javascript">
+    function isNumber(evt)
+    {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+        {
+            return false;
+        }
+        return true;
+    }
+</script>*@
+
+
+
+
 @using (Html.BeginForm())
 {
-    <text>Times to run: </text>  @Html.TextBoxFor(x => x.Amount);
-    <input type="submit" value="Generate"/>
+    <h5>
+        <text>Number of items to generate: </text> <br />   @*<input id="txtChar" onkeypress="return isNumber(event)" type="text" name="txtChar"  />*@    @Html.TextBoxFor(x => x.Amount, new { style = "width:100px" })
+        <input type="submit" value="Generate" />
+    </h5>
+
+    @if (@Model.Failure == true)
+    {
+        <h4>
+            <text><strong>Please enter a valid number</strong></text>
+        </h4>
+    }
+
 }
+
 

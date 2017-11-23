@@ -10,75 +10,85 @@
     @*<li><a href="javascript:window.location.href=window.location.href">Refresh Items</a></li>*@
 </ul>
 
-<h2>List</h2>
+<h2>Generated Items</h2>
+<div>
+    @foreach(var item in Model.ItemList)
+            {
+                <table >
+                    <tr>
+                        <th scope="row">Name:</th>
+                        <td rowspan="1" >@item.Name</td>
+                    </tr>
+                    @*<tr>
+                        <th> &nbsp;</th>
+                        <td>&nbsp;</td>
+                    </tr>*@
+                    <tr>
+                        <th scope="row">Item Type:</th>
+                        <td>@item.ItemType</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rarity:</th>
+                        <td>@item.Rarity</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Value:</th>
+                        <td>@item.Value</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Durability:</th>
+                        <td>@item.CurrentDurability / @item.MaxDurability </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Properties:</th>
+                        <td rowspan="1">
+                            @foreach (var prop in item.SecondaryProps.Values)
+                            {
+                                <text>@prop.PropDescription </text>
+                            }
+                            
+                        </td>
+                    </tr>
+                    @*<tr>
+                        <th scope="row"></th>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>*@
 
-@foreach (var item in Model.ItemList)
-{
-    <div>       
-        <table border="0">            
-            <tr>                
-                <th scope="row" width="100">Name:</th>
-                <td>@item.Name</td>
-            </tr>
-            <tr>
-                <th scope="row">Item Type:</th>
-                <td>@item.ItemType</td>
-            </tr>
-            <tr>
-                <th scope="row">Rarity:</th>
-                <td>@item.Rarity</td>
-            </tr>
-            <tr>
-                <th scope="row">Value:</th>
-                <td>@item.Value</td>
-            </tr>            
-            <tr>
-                <th scope="row"> Durability:</th>
-                <td>@item.CurrentDurability / @item.MaxDurability </td>
-            </tr>
-            <tr>
-                
-                <th scope="row">Properties:</th>
-                <td>
-                    @foreach (var prop in item.SecondaryProps.Values)
+                    @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
                     {
-                        <text>@prop.PropDescription </text>
+                        <tr>
+                            <th scope="row">Damage:</th>
+                            <td>@item.GetType().GetProperty("DamageValue").GetValue(item)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Damage Type:</th>
+                            <td>@item.GetType().GetProperty("DamageType").GetValue(item)</td>
+                        </tr>
                     }
-                </td>
-            </tr>
 
-            @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
-            {
-            <tr>
-                <th scope="row">Damage:</th> 
-                <td>@item.GetType().GetProperty("DamageValue").GetValue(item)</td>
-            </tr>
-            <tr>
-                <th scope="row">Damage Type:</th> 
-                <td>@item.GetType().GetProperty("DamageType").GetValue(item)</td> 
-            </tr>
+                    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
+                    {
+                        <tr>
+                            <th scope="row">Armor:</th>
+                            <td>@item.GetType().GetProperty("ArmorValue").GetValue(item)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Armor Type:</th>
+                            <td>@item.GetType().GetProperty("ArmorType").GetValue(item)</td>
+                        </tr>
+                    }
+
+                    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
+                    {
+                        <tr>
+                            <th scope="row">Effects:</th>
+                            <td>@item.GetType().GetProperty("Effect").GetValue(item)</td>
+                        </tr>
+                        <tr><th scope="row">&nbsp;</th><td>&nbsp;</td></tr>
+                    }
+                </table>
             }
 
-            else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
-            {
-            <tr>
-                <th scope="row">Armor:</th> 
-                <td>@item.GetType().GetProperty("ArmorValue").GetValue(item)</td>
-            </tr>
-            <tr>
-                <th scope="row">Armor Type:</th> 
-                <td>@item.GetType().GetProperty("ArmorType").GetValue(item)</td>
-            </tr>
-            }
-
-            else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
-            {
-            <tr>
-                <th scope="row">Effects:</th>
-                <td>@item.GetType().GetProperty("Effect").GetValue(item)</td>
-            </tr>
-            }
-        </table>
-        <br />
-    </div>
-}
+</div>

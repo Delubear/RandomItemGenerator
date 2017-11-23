@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MVCItemGen.Model;
 using MVCItemGen.ViewModels;
-using RPGItemGenerator.ItemGeneration;
 using System;
 
 namespace MVCItemGen.Controllers
@@ -15,11 +13,20 @@ namespace MVCItemGen.Controllers
             _baseItemRespository = baseItemRepository;
         }
         
-        public ActionResult List()
+
+        public ActionResult List(bool retry = false)
         {
             //List<Item> items;
             //items = _baseItemRespository.BaseItemRepository; 
-            return View(new ItemListViewModel()); 
+            if(retry == false)
+            {
+                return View(new ItemListViewModel { Failure = false });
+            }
+            else
+            {
+                return View(new ItemListViewModel { Failure = true });
+            }
+            
         }
 
         public ViewResult Generate(int amount)
@@ -40,8 +47,17 @@ namespace MVCItemGen.Controllers
         {
             if (ModelState.IsValid)
             {
-                var myint = Convert.ToInt32(ilvm.Amount);
-                return RedirectToAction("Generate", new { amount = myint });
+                int outParse;
+                if(Int32.TryParse(ilvm.Amount, out outParse))
+                {
+                    var myint = Convert.ToInt32(ilvm.Amount);
+                    return RedirectToAction("Generate", new { amount = myint });
+                }
+                else
+                {
+                    return RedirectToAction("List", new { retry = true });
+                }
+                
             }
             return View();
         }
