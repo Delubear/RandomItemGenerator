@@ -15,6 +15,7 @@ namespace MVCItemGen.Model
             builder.Entity<Armor>();
             builder.Entity<Weapons>();
             builder.Entity<Potions>();
+            builder.Entity<Jewelry>();
             builder.Entity<SecondaryProperties>();
             builder.Entity<Ancient>();
             builder.Entity<New>();

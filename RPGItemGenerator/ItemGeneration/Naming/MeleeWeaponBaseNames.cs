@@ -15,6 +15,7 @@ namespace RPGItemGenerator.ItemGeneration
             GenerateRangedWeaponBaseNames();
             GeneratePotionBaseNames();
             GenerateArmorBaseNames();
+            GenerateJewelryBaseNames();
         }
 
         public void GenerateMeleeWeaponBaseNames()

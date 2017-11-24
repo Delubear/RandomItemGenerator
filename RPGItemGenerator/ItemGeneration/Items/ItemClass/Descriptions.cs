@@ -40,15 +40,15 @@ namespace RPGItemGenerator.ItemGeneration
         private void SetDescAdjectives()
         {
             int x = r.Next(0,3);
-            string dt = "";
+            string dt = " ";
             if(x == 1)
             {
                 if(ItemType == ItemTypes.Weapon)
                 {
-                    dt = this.GetType().GetProperty("DamageType").GetValue(this).ToString();
+                    dt += this.GetType().GetProperty("DamageType").GetValue(this).ToString() + " ";
                 }                
             }            
-            sb.Append("A " + dt + " ");                                      
+            sb.Append("A" + dt);                                      
         }
     }
 }

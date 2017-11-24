@@ -28,7 +28,7 @@ namespace RPGItemGenerator.ItemGeneration
             
             item.Value = (int)(item.Value *1.1);            
 
-            if (item.ItemType == ItemTypes.Potion)
+            if (item.ItemType == ItemTypes.Potion || item.ItemType == ItemTypes.Jewelry)
             {
                 var currentEffectString = item.GetType().GetProperty("Effect").GetValue(item).ToString();
                 var newEffectString = currentEffectString += "+Vitality ";

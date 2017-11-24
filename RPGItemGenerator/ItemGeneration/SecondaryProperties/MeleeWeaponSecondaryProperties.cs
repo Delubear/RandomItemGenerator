@@ -15,6 +15,7 @@ namespace RPGItemGenerator.ItemGeneration
             GenerateRangedWeaponSecondaryProperties();
             GenerateArmorSecondaryProperties();
             GeneratePotionSecondaryProperties();
+            GenerateJewelrySecondaryProperties();
         }
 
         public void GenerateMeleeWeaponSecondaryProperties()

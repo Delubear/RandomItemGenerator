@@ -49,7 +49,7 @@ namespace RPGItemGenerator.ItemGeneration
             {
                 {"Durable", 3 }, {"Fragile", 3 },
                 {"New", 2 }, {"Old", 2 }, {"Ancient", 2 },
-                {"Horned", 8 }, {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
+                {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
                 {"Focusing", 5 }, {"Vitality", 10 }, {"Strength", 7 },
                 {"Steel", 9 }, {"Iron", 9 },
             });
@@ -113,7 +113,7 @@ namespace RPGItemGenerator.ItemGeneration
             {
                 {"Durable", 3 }, {"Fragile", 3 },
                 {"New", 2 }, {"Old", 2 }, {"Ancient", 2 },
-                {"Horned", 8 }, {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
+                {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
                 {"Focusing", 5 }, {"Vitality", 10 }, {"Strength", 7 },
                 {"Steel", 9 }, {"Iron", 9 },
             });
@@ -177,7 +177,7 @@ namespace RPGItemGenerator.ItemGeneration
             {
                 {"Durable", 3 }, {"Fragile", 3 },
                 {"New", 2 }, {"Old", 2 }, {"Ancient", 2 },
-                {"Horned", 8 }, {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
+                {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
                 {"Focusing", 5 }, {"Vitality", 10 }, {"Strength", 7 },
                 {"Steel", 9 }, {"Iron", 9 },
             });
@@ -241,7 +241,7 @@ namespace RPGItemGenerator.ItemGeneration
             {
                 {"Durable", 3 }, {"Fragile", 3 },
                 {"New", 2 }, {"Old", 2 }, {"Ancient", 2 },
-                {"Horned", 8 }, {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
+                {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
                 {"Focusing", 5 }, {"Vitality", 10 }, {"Strength", 7 },
                 {"Steel", 9 }, {"Iron", 9 },
             });
@@ -305,7 +305,7 @@ namespace RPGItemGenerator.ItemGeneration
             {
                 {"Durable", 3 }, {"Fragile", 3 }, {"Unbreakable", 3},
                 {"New", 2 }, {"Old", 2 }, {"Ancient", 2 },
-                {"Horned", 8 }, {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
+                {"Platemail", 8 }, {"Chainmail", 8 },{"Leather", 8 },
                 {"Focusing", 5 }, {"Vitality", 10 }, {"Strength", 7 },
                 {"Steel", 9 }, {"Iron", 9 },
             });

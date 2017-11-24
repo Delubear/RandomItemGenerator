@@ -9,22 +9,8 @@ namespace RPGItemGenerator.ItemGeneration
     {
         private string GetNewBaseName()
         {
-            string typeOfName = "";
-
-            if (ItemType == ItemTypes.Weapon)
-            {
-                var wpnType = this.GetType().GetProperty("WeaponType").GetValue(this);
-                typeOfName = wpnType.ToString();
-            }
-            else if (ItemType == ItemTypes.Armor)
-            {
-                var armType = this.GetType().GetProperty("ArmorType").GetValue(this);
-                typeOfName = armType.ToString();
-            }
-            else if(ItemType == ItemTypes.Potion)
-            {
-                typeOfName = ItemTypes.Potion.ToString();
-            }
+            string typeOfName = GetTypeOf(this);
+            
             
             HashSet<string> _name = ItemBaseNames[Rarity.ToString() + ":" + typeOfName];
             return _name.ElementAt(r.Next(0, _name.Count()));

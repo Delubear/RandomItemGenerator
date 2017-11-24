@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RPGItemGenerator.ItemGeneration;
+﻿using RPGItemGenerator.ItemGeneration;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace MVCItemGen.Model
@@ -23,25 +21,12 @@ namespace MVCItemGen.Model
         }
 
         Random r = new Random();
+        RunItemGen ItemGen = new RunItemGen();
 
         public void AddRandomItem()
         {
-            int x = r.Next(0, 3);
-            if (x == 0)
-            {
-                _itemDbContext.Add(new Weapons(itemBaseName));
-                //return new Weapons(itemBaseName);
-            }
-            else if (x == 1)
-            {
-                _itemDbContext.Add(new Armor(itemBaseName));
-                //return new Armor(itemBaseName);
-            }
-            else
-            {
-                _itemDbContext.Add(new Potions(itemBaseName));
-                //return new Potions(itemBaseName);
-            }
+            _itemDbContext.Add(ItemGen.GetItemType(itemBaseName));
+            
             _itemDbContext.SaveChanges();
         }
 
@@ -49,7 +34,6 @@ namespace MVCItemGen.Model
         {
             return _itemDbContext.items;
         }
-
 
         public List<Item> BaseItemRepository 
         {

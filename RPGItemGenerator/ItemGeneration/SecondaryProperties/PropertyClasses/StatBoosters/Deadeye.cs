@@ -24,7 +24,12 @@ namespace RPGItemGenerator.ItemGeneration
                     item.GetType().GetProperty("DamageValue").SetValue(item, dv);
                 }                
             }
-            
+            else if (item.ItemType == ItemTypes.Potion || item.ItemType == ItemTypes.Jewelry)
+            {
+                var currentEffectString = item.GetType().GetProperty("Effect").GetValue(item).ToString();
+                var newEffectString = currentEffectString += "+Deadeye ";
+                item.GetType().GetProperty("Effect").SetValue(item, newEffectString);
+            }
         }
     }
 }

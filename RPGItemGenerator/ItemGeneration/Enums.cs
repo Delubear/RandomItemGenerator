@@ -9,7 +9,7 @@
 
         public enum ItemTypes
         {
-            Weapon, Armor, Potion, Ingredient, Garbage
+            Weapon, Armor, Potion, Jewelry
         }
 
         public enum WeaponCategory
@@ -30,6 +30,11 @@
         public enum DamageTypes
         {
             Bludgeoning, Piercing, Slashing, Flaming, Freezing, Lightning, Acidic
+        }
+
+        public enum JewelryType
+        {
+            Neck, Finger, Wrist, Ear
         }
     }
 }

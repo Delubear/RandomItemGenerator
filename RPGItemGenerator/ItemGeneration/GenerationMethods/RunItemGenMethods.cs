@@ -59,6 +59,11 @@ namespace RPGItemGenerator.ItemGeneration
             {
                 sb.AppendLine($"Effects: {testItem.GetType().GetProperty("Effect").GetValue(testItem)}");
             }
+            else if (testItem.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Jewelry")
+            {
+                sb.AppendLine($"Effects: {testItem.GetType().GetProperty("Effect").GetValue(testItem)}");
+                sb.AppendLine($"Jewelry Type: {testItem.GetType().GetProperty("JewelryType").GetValue(testItem)}");
+            }
             sb.AppendLine();          
         }
 
@@ -89,8 +94,7 @@ namespace RPGItemGenerator.ItemGeneration
 
         public Item GetItemType(Dictionary<string, HashSet<string>> itemBaseName, string rarity = "")
         {            
-            int x = 0;
-            x = rnd.Next(0, 3);
+            ItemTypes itemType = (ItemTypes)rnd.Next(0, Enum.GetValues(typeof(ItemTypes)).Length);
             Item testItem;
             Rarity rare;
 
@@ -116,32 +120,40 @@ namespace RPGItemGenerator.ItemGeneration
             }
             if (rarity != "")
             {
-                if (x == 0)
+                if (itemType == ItemTypes.Armor)
                 {
                     testItem = new Armor(itemBaseName, rare);
                 }
-                else if (x == 1)
+                else if (itemType == ItemTypes.Weapon)
                 {
                     testItem = new Weapons(itemBaseName, rare);
                 }
-                else
+                else if (itemType == ItemTypes.Potion)
                 {
                     testItem = new Potions(itemBaseName, rare);
+                }
+                else
+                {
+                    testItem = new Jewelry(itemBaseName, rare);
                 }
             }
             else
             {
-                if (x == 0)
+                if (itemType == ItemTypes.Armor)
                 {
                     testItem = new Armor(itemBaseName);
                 }
-                else if (x == 1)
+                else if (itemType == ItemTypes.Weapon)
                 {
                     testItem = new Weapons(itemBaseName);
                 }
-                else
+                else if (itemType == ItemTypes.Potion)
                 {
                     testItem = new Potions(itemBaseName);
+                }
+                else
+                {
+                    testItem = new Jewelry(itemBaseName);
                 }
             }
 

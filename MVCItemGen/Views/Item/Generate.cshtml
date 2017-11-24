@@ -49,12 +49,7 @@
                             
                         </td>
                     </tr>
-                    @*<tr>
-                        <th scope="row"></th>
-                        <td>
-                            &nbsp;
-                        </td>
-                    </tr>*@
+
 
                     @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
                     {
@@ -87,6 +82,18 @@
                             <td>@item.GetType().GetProperty("Effect").GetValue(item)</td>
                         </tr>
                         <tr><th scope="row">&nbsp;</th><td>&nbsp;</td></tr>
+                    }
+
+                    else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Jewelry")
+                    {
+                        <tr>
+                            <th scope="row">Effects:</th>
+                            <td>@item.GetType().GetProperty("Effect").GetValue(item)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Jewelry Type:</th>
+                            <td>@item.GetType().GetProperty("JewelryType").GetValue(item)</td>
+                        </tr>
                     }
                 </table>
             }

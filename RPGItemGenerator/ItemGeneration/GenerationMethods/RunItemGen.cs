@@ -19,6 +19,7 @@ namespace RPGItemGenerator.ItemGeneration
         public void ConsoleItemGeneration(double runAmount)
         {
             GenerateLists();
+            
             for (int i = 0; i < runAmount; i++)   
             {                
                 Item testItem = GetItemType(itemBaseName);

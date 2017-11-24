@@ -20,9 +20,14 @@ namespace RPGItemGenerator.ItemGeneration
                 var armType = itm.GetType().GetProperty("ArmorType").GetValue(itm);
                 type = armType.ToString();
             }
-            else if (ItemType == ItemTypes.Potion)
+            else if(ItemType == ItemTypes.Jewelry)
             {
-                type = ItemTypes.Potion.ToString();
+                var jewelryType = itm.GetType().GetProperty("JewelryType").GetValue(itm);
+                type = jewelryType.ToString();
+            }
+            else
+            {
+                type = itm.GetType().GetProperty("ItemType").GetValue(itm).ToString();
             }
 
             return type;

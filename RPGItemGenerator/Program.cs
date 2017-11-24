@@ -6,9 +6,7 @@ namespace RPGItemGenerator
     public partial class Program
     {
         static void Main(string[] args)
-        {
-
-            //GenerateListItems.
+        {   
             Console.WriteLine("Default Item Gen[0] or Discord Behavior[1]?");
             string choice = Console.ReadLine();
             if (choice == "0")

@@ -72,6 +72,7 @@
     <Compile Include="ItemGeneration\Items\ItemClass\PropertyGeneration.cs" />
     <Compile Include="ItemGeneration\Items\ItemClass\PropertyGenerationMethods.cs" />
     <Compile Include="ItemGeneration\Items\ItemClass\Values.cs" />
+    <Compile Include="ItemGeneration\Items\Jewelry\Jewelry.cs" />
     <Compile Include="ItemGeneration\Items\Potions\Potions.cs" />
     <Compile Include="ItemGeneration\Items\SecondaryProperties.cs" />
     <Compile Include="ItemGeneration\Items\Weapons\DamageValue.cs" />
@@ -79,9 +80,11 @@
     <Compile Include="ItemGeneration\Items\Weapons\DamageTypes.cs" />
     <Compile Include="ItemGeneration\Items\Weapons\Accuracy.cs" />
     <Compile Include="ItemGeneration\Items\Weapons\Weapons.cs" />
+    <Compile Include="ItemGeneration\Naming\JewelryBaseNames.cs" />
     <Compile Include="ItemGeneration\Naming\ArmorBaseNames.cs" />
     <Compile Include="ItemGeneration\GenerationMethods\RunItemGen.cs" />
     <Compile Include="ItemGeneration\Naming\PotionBaseNames.cs" />
+    <Compile Include="ItemGeneration\SecondaryProperties\JewelrySecondaryProperties.cs" />
     <Compile Include="ItemGeneration\SecondaryProperties\ArmorSecondaryProperties.cs" />
     <Compile Include="ItemGeneration\SecondaryProperties\PropertyClasses\Aging\Ancient.cs" />
     <Compile Include="ItemGeneration\SecondaryProperties\PropertyClasses\ArmorTypes\Leather.cs" />

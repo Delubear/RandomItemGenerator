@@ -33,13 +33,12 @@ namespace RPGItemGenerator.ItemGeneration
                     item.GetType().GetProperty("DamageValue").SetValue(item, dv);
                 }                
             }
-            else if(item.ItemType == ItemTypes.Potion)
+            else if(item.ItemType == ItemTypes.Potion || item.ItemType == ItemTypes.Jewelry)
             {
                 var currentEffectString = item.GetType().GetProperty("Effect").GetValue(item).ToString();
                 var newEffectString = currentEffectString += "+Focus "; 
                 item.GetType().GetProperty("Effect").SetValue(item, newEffectString);
-            }
-            
+            }            
         }
     }
 }
