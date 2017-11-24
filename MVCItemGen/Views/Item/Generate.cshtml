@@ -3,13 +3,11 @@
 @model MVCItemGen.ViewModels.ItemListViewModel
 
 <ul>
-    <li><a href="/Item/List">Home</a></li>
+    <li><a href="/Home/Index">Home</a></li>
+    <li><a href="/Item/List">Item Generation</a></li>
     <li><a href="javascript:window.location.href=window.location.href">Refresh Items</a></li>
-    @*<li><input type="button" value="Home" onclick="@("location.href='/Item/List'")" /></li>
-        <li><input type="button" value="Refresh Items" onclick="@("location.href='javascript:window.location.href=window.location.href'")" /></li>*@
-    @*<li><a href="javascript:window.location.href=window.location.href">Refresh Items</a></li>*@
 </ul>
-
+   
 <h2>Generated Items</h2>
 <div>
     @foreach(var item in Model.ItemList)
@@ -19,10 +17,6 @@
                         <th scope="row">Name:</th>
                         <td rowspan="1" >@item.Name</td>
                     </tr>
-                    @*<tr>
-                        <th> &nbsp;</th>
-                        <td>&nbsp;</td>
-                    </tr>*@
                     <tr>
                         <th scope="row">Item Type:</th>
                         <td>@item.ItemType</td>
@@ -49,7 +43,6 @@
                             
                         </td>
                     </tr>
-
 
                     @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
                     {
@@ -97,5 +90,4 @@
                     }
                 </table>
             }
-
 </div>

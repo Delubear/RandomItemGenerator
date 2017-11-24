@@ -20,11 +20,11 @@ namespace MVCItemGen.Controllers
             //items = _baseItemRespository.BaseItemRepository; 
             if(retry == false)
             {
-                return View(new ItemListViewModel { Failure = false });
+                return View(new ItemListViewModel { Failure = false, Generating = false });
             }
             else
             {
-                return View(new ItemListViewModel { Failure = true });
+                return View(new ItemListViewModel { Failure = true, Generating = false });
             }
             
         }
@@ -33,13 +33,13 @@ namespace MVCItemGen.Controllers
         {
             _baseItemRespository.Reset();
             //List<Item> items ;            
-
+            
             //items = _baseItemRespository.BaseItemRepository;
             for(int i = 0; i < amount; i++)
             {
                 _baseItemRespository.AddRandomItem();
             }
-            return View(new ItemListViewModel { ItemList = _baseItemRespository.BaseItemRepository });
+            return View(new ItemListViewModel { ItemList = _baseItemRespository.BaseItemRepository, Generating = true });
         }
         
         [HttpPost]

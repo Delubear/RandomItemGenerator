@@ -6,7 +6,8 @@ namespace MVCItemGen.Controllers
     {
         public IActionResult Index()
         {
-            return RedirectToAction("List", "Item");
-        }
+            return View();
+            //return RedirectToAction("List", "Item");
+        }      
     }
 }
