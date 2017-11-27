@@ -7,15 +7,93 @@
     <li><a href="/Item/List">Item Generation</a></li>
     <li><a href="javascript:window.location.href=window.location.href">Refresh Items</a></li>
 </ul>
-   
+
 <h2>Generated Items</h2>
-<div>
-    @foreach(var item in Model.ItemList)
-            {
-                <table >
-                    <tr>
+<div id="ResultsTable">
+    <table>
+        <th scope="row">Items:</th>
+        
+        @{int i = 0; }
+        <tr>            
+            @foreach (var item in Model.ItemList)
+            {                
+                if(i == 10)
+                {
+                    <tr></tr>
+                    i = 0;
+                }
+                i++;
+                <td>
+                    <div class="tooltip">
+                        <span class="tooltiptext">
+                            Name: @item.Name
+                            <br />
+                            Item Type: @item.ItemType
+                            <br />
+                            Rarity: @item.Rarity
+                            <br />
+                            Value: @item.Value
+                            <br />
+                            Durability: @item.CurrentDurability / @item.MaxDurability
+                            <br />
+                            Properties: @foreach (var prop in item.SecondaryProps.Values)
+                            {<text>@prop.PropDescription </text>  }
+
+                            @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
+                            {
+                                <br />
+                                <text>Damage: @item.GetType().GetProperty("DamageValue").GetValue(item)</text>
+                                <br />
+                                <text>Damage Type: @item.GetType().GetProperty("DamageType").GetValue(item)</text>
+                            }
+
+                            else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
+                            {
+                                <br />
+                                <text>Armor: @item.GetType().GetProperty("ArmorValue").GetValue(item)</text>
+                                <br />
+                                <text>Armor Type: @item.GetType().GetProperty("ArmorType").GetValue(item)</text>
+                            }
+
+                            else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
+                            {
+                                <br />
+                                <text>Effects: @item.GetType().GetProperty("Effect").GetValue(item)</text>
+                            }
+
+                            else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Jewelry")
+                            {
+                                <br />
+                                <text>Effects: @item.GetType().GetProperty("Effect").GetValue(item)</text>
+                                <br />
+                                <text>Jewelry Type: @item.GetType().GetProperty("JewelryType").GetValue(item)</text>
+                            }
+                        </span>
+                        @if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
+                        {
+                            <img src="/content/A_Society_Jitte_Icon.png" />
+                        }
+                        else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
+                        {
+                            <img src="/content/A_Pair_Of_Explorer_Leather_Pauldrons_Icon.png" />
+                        }
+                        else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
+                        {
+                            <img src="/content/Academy_Healing_Potion_Icon.png" />
+                        }
+                        else if (item.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Jewelry")
+                        {
+                            <img src="/content/A_Bracelet_of_Piercing_Protection_Icon.png" />
+
+                        }
+                    </div>
+                </td>
+
+                @*<table class="ItmTables">*@
+
+                @*<tr>
                         <th scope="row">Name:</th>
-                        <td rowspan="1" >@item.Name</td>
+                        <td rowspan="1">@item.Name</td>
                     </tr>
                     <tr>
                         <th scope="row">Item Type:</th>
@@ -40,7 +118,7 @@
                             {
                                 <text>@prop.PropDescription </text>
                             }
-                            
+
                         </td>
                     </tr>
 
@@ -87,7 +165,15 @@
                             <th scope="row">Jewelry Type:</th>
                             <td>@item.GetType().GetProperty("JewelryType").GetValue(item)</td>
                         </tr>
-                    }
-                </table>
+                    }*@
+
+                @*</table>*@
+
             }
-</div>
+            </tr>
+            </table>
+            </div>
+
+
+
+            <script type="text/javascript" src="~/js/generate.js"></script>
