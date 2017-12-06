@@ -28,7 +28,7 @@ namespace RPGItemGenerator.ItemGeneration
             Console.WriteLine($"Legendary: {legendary.ToString()}  -- {Math.Round(legendary / runAmount * 100, 2)}%");
         }
 
-        public void AppendtemProperties(Item testItem)
+        private void AppendtemProperties(Item testItem)
         {
             sb.AppendLine($"Name: {testItem.Name}");
             sb.AppendLine($"Value: {testItem.Value}");
@@ -67,7 +67,7 @@ namespace RPGItemGenerator.ItemGeneration
             sb.AppendLine();          
         }
 
-        public void PrintItemProperties(CommandContext ctx = null, bool WriteToConsole = true)
+        private void PrintItemProperties(CommandContext ctx = null, bool WriteToConsole = true)
         {
             if(WriteToConsole == true)
             {
@@ -90,6 +90,26 @@ namespace RPGItemGenerator.ItemGeneration
                 case Rarity.Epic:      { Console.ForegroundColor = ConsoleColor.Cyan;   epic++;      break; }
                 case Rarity.Legendary: { Console.ForegroundColor = ConsoleColor.Red;    legendary++; break; }
             }
+        }
+
+        public Item GetNewRandomItem()
+        {
+            if(itemBaseName.Count < 3)
+            {
+                GenerateLists();
+            }
+            var _itemBaseName = itemBaseName;
+            return GetItemType(itemBaseName);
+        }
+
+        public Item GetNewRandomItem(string rarity)
+        {
+            if (itemBaseName.Count < 3)
+            {
+                GenerateLists();
+            }
+            var _itemBaseName = itemBaseName;
+            return GetItemType(itemBaseName, rarity);
         }
 
         public Item GetItemType(Dictionary<string, HashSet<string>> itemBaseName, string rarity = "")
