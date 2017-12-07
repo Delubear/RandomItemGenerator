@@ -1,6 +1,7 @@
 ﻿using DSharpPlus.CommandsNext;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using static RPGItemGenerator.ItemGeneration.Enums;
 
 namespace RPGItemGenerator.ItemGeneration
@@ -29,41 +30,8 @@ namespace RPGItemGenerator.ItemGeneration
         }
 
         private void AppendtemProperties(Item testItem)
-        {
-            sb.AppendLine($"Name: {testItem.Name}");
-            sb.AppendLine($"Value: {testItem.Value}");
-            sb.AppendLine($"Description: {testItem.Description}");
-            sb.AppendLine($"Rarity: {testItem.Rarity}");
-            sb.AppendLine($"Type: {testItem.ItemType}");
-            sb.AppendLine($"Durability: {testItem.CurrentDurability}/{testItem.MaxDurability}");
-
-            foreach (var prop in testItem.SecondaryProps.Values)
-            {
-                sb.AppendLine($"Has Property: " + prop.PropDescription);
-            }
-
-            if (testItem.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Armor")
-            {
-                sb.AppendLine($"ArmorType: " + testItem.GetType().GetProperty("ArmorType").GetValue(testItem));
-                sb.AppendLine($"ArmorValue: " + testItem.GetType().GetProperty("ArmorValue").GetValue(testItem));
-            }
-            else if (testItem.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Weapons")
-            {
-                sb.AppendLine($"WeaponCategory: {testItem.GetType().GetProperty("WeaponCat").GetValue(testItem)}");
-                sb.AppendLine($"WeaponType: {testItem.GetType().GetProperty("WeaponType").GetValue(testItem)}");
-                sb.AppendLine($"Damage: {testItem.GetType().GetProperty("DamageValue").GetValue(testItem)}");
-                sb.AppendLine($"Damage Type: {testItem.GetType().GetProperty("DamageType").GetValue(testItem)}");
-                sb.AppendLine($"Accuracy: {testItem.GetType().GetProperty("Accuracy").GetValue(testItem)}");
-            }
-            else if (testItem.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Potions")
-            {
-                sb.AppendLine($"Effects: {testItem.GetType().GetProperty("Effect").GetValue(testItem)}");
-            }
-            else if (testItem.GetType().ToString() == "RPGItemGenerator.ItemGeneration.Jewelry")
-            {
-                sb.AppendLine($"Effects: {testItem.GetType().GetProperty("Effect").GetValue(testItem)}");
-                sb.AppendLine($"Jewelry Type: {testItem.GetType().GetProperty("JewelryType").GetValue(testItem)}");
-            }
+        {            
+            sb.Append(GetItemStatsAsString(testItem));
             sb.AppendLine();          
         }
 
@@ -90,26 +58,6 @@ namespace RPGItemGenerator.ItemGeneration
                 case Rarity.Epic:      { Console.ForegroundColor = ConsoleColor.Cyan;   epic++;      break; }
                 case Rarity.Legendary: { Console.ForegroundColor = ConsoleColor.Red;    legendary++; break; }
             }
-        }
-
-        public Item GetNewRandomItem()
-        {
-            if(itemBaseName.Count < 3)
-            {
-                GenerateLists();
-            }
-            var _itemBaseName = itemBaseName;
-            return GetItemType(itemBaseName);
-        }
-
-        public Item GetNewRandomItem(string rarity)
-        {
-            if (itemBaseName.Count < 3)
-            {
-                GenerateLists();
-            }
-            var _itemBaseName = itemBaseName;
-            return GetItemType(itemBaseName, rarity);
         }
 
         public Item GetItemType(Dictionary<string, HashSet<string>> itemBaseName, string rarity = "")

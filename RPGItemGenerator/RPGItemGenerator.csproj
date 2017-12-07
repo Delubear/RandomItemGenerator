@@ -59,6 +59,7 @@
     <Compile Include="Discord\MainAsyncDiscord.cs" />
     <Compile Include="ItemGeneration\GenerationMethods\GenerateListItems.cs" />
     <Compile Include="ItemGeneration\GenerationMethods\GetRunTimeAmount.cs" />
+    <Compile Include="ItemGeneration\GenerationMethods\LibraryMethods.cs" />
     <Compile Include="ItemGeneration\GenerationMethods\RunItemGenMethods.cs" />
     <Compile Include="ItemGeneration\Items\Armor\ArmorValue.cs" />
     <Compile Include="ItemGeneration\Items\ItemClass\ItemProperties.cs" />
