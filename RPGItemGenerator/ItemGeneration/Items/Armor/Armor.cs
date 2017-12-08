@@ -54,5 +54,20 @@ namespace RPGItemGenerator.ItemGeneration
             Name = GetNewName();
             Description = GetNewDescription();
         }
+
+        public Armor(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare, ArmorTypes armorType)
+        {
+            ID = new Guid();
+            this.ItemBaseNames = itemBaseName;
+            Rarity = rare;
+            ItemType = ItemTypes.Armor;
+            ArmorType = armorType;
+            Value = GetNewValue();
+            ArmorValue = GetNewArmorValue();
+            GetDurability();
+            GetNewSecondaryProperty(this);
+            Name = GetNewName();
+            Description = GetNewDescription();
+        }
     }
 }

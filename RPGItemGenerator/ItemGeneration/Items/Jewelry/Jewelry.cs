@@ -54,6 +54,20 @@ namespace RPGItemGenerator.ItemGeneration
             Description = GetNewDescription();
         }
 
+        public Jewelry(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare, JewelryType jType)
+        {
+            ID = new Guid();
+            this.ItemBaseNames = itemBaseName;
+            Rarity = rare;
+            ItemType = ItemTypes.Jewelry;
+            JewelryType = jType;
+            Value = GetNewValue();
+            GetDurability();
+            GetNewSecondaryProperty(this);
+            Name = GetNewName();
+            Description = GetNewDescription();
+        }
+
         private void GetJewelryType()
         {
             JewelryType = (JewelryType)r.Next(0, Enum.GetValues(typeof(JewelryType)).Length);

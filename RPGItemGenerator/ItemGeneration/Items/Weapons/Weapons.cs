@@ -79,5 +79,23 @@ namespace RPGItemGenerator.ItemGeneration
             Name = GetNewName();  
             Description = GetNewDescription();
         }
+
+        public Weapons(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare, WeaponCategory wCat, WeaponsType wType)
+        {
+            ID = new Guid();
+            this.ItemBaseNames = itemBaseName;
+            Rarity = rare;
+            ItemType = ItemTypes.Weapon;
+            WeaponCat = wCat;
+            WeaponType = wType;
+            GenerateAccuracy();
+            GetDamageTypes();
+            Value = GetNewValue();
+            DamageValue = GetNewDamageValue();
+            GetDurability();
+            GetNewSecondaryProperty(this);
+            Name = GetNewName();
+            Description = GetNewDescription();
+        }
     }
 }
