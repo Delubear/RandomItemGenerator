@@ -1,0 +1,18 @@
+﻿<Window x:Class="ItemDesign.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItemDesign"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <ComboBox x:Name="itemTypeSelector" HorizontalAlignment="Left" Margin="26,44,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Weapon"></ComboBoxItem>
+            <ComboBoxItem Content="Armor"></ComboBoxItem>
+            <ComboBoxItem Content="Potion"></ComboBoxItem>
+            <ComboBoxItem Content="Jewelry"></ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="itemTypeSelectorLabel" Content="Select Item Type:" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
