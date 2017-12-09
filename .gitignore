@@ -6,7 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+RPGItemGenerator/discordsettings.json
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
