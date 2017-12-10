@@ -170,7 +170,45 @@ namespace ItemDesign
             var uiDesigner = new UIDesignerCalls();
             Item generatedResultItem = uiDesigner.GenerateItemFromForm(formResults);
 
-            testLabel.Content = generatedResultItem.Name;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Name: {generatedResultItem.Name}");
+            sb.AppendLine($"Rarity: {generatedResultItem.Rarity.ToString()}");
+            sb.AppendLine($"Value: {generatedResultItem.Value.ToString()}");
+            sb.AppendLine($"Durability: {generatedResultItem.CurrentDurability}/{generatedResultItem.MaxDurability}");
+            sb.AppendLine($"Item Type: {generatedResultItem.ItemType}");
+
+            List<string> properties = new List<string>();
+            foreach (var prop in generatedResultItem.SecondaryProps.Values)
+            {
+                properties.Add(prop.PropDescription);
+            }
+            sb.AppendLine($"Properties: {string.Join(", ", properties)}");
+
+            if (generatedResultItem.ItemType == Enums.ItemTypes.Weapon)
+            {
+                sb.AppendLine($"Weapon Category: {generatedResultItem.GetType().GetProperty("WeaponCat").GetValue(generatedResultItem)}");
+                sb.AppendLine($"Weapon Type: {generatedResultItem.GetType().GetProperty("WeaponType").GetValue(generatedResultItem)}");
+                sb.AppendLine($"Damage: {generatedResultItem.GetType().GetProperty("DamageValue").GetValue(generatedResultItem)}");
+                sb.AppendLine($"Damage Type: {generatedResultItem.GetType().GetProperty("DamageType").GetValue(generatedResultItem)}");
+                sb.AppendLine($"Accuracy: {generatedResultItem.GetType().GetProperty("Accuracy").GetValue(generatedResultItem)}");
+            }
+            else if(generatedResultItem.ItemType == Enums.ItemTypes.Armor)
+            {
+                sb.AppendLine($"Armor Type: {generatedResultItem.GetType().GetProperty("ArmorType").GetValue(generatedResultItem)}");
+                sb.AppendLine($"Armor Value: {generatedResultItem.GetType().GetProperty("ArmorValue").GetValue(generatedResultItem)}");
+            }
+            else if(generatedResultItem.ItemType == Enums.ItemTypes.Potion)
+            {
+                sb.AppendLine($"Effects: {generatedResultItem.GetType().GetProperty("Effect").GetValue(generatedResultItem)}");
+            }
+            else if(generatedResultItem.ItemType == Enums.ItemTypes.Jewelry)
+            {
+                sb.AppendLine($"Effects: {generatedResultItem.GetType().GetProperty("Effect").GetValue(generatedResultItem)}");
+                sb.AppendLine($"Jewelry Type: {generatedResultItem.GetType().GetProperty("JewelryType").GetValue(generatedResultItem)}");
+            }
+
+            sb.AppendLine($"Description: {generatedResultItem.Description}");
+            itemTextBox.Text = sb.ToString();
         }
     }
 }

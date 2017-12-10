@@ -8,7 +8,7 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid x:Name="mainGrid">
         <ComboBox x:Name="itemTypeSelector" HorizontalAlignment="Left" Margin="26,44,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="itemTypeSelector_DropDownClosed" Initialized="itemTypeSelector_Initialized">
-            
+
         </ComboBox>
         <Label x:Name="itemTypeSelectorLabel" Content="Select Item Type:" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top"/>
         <Label x:Name="itemSubTypeLabel" Content="Select Item Sub-Type:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
@@ -18,6 +18,6 @@
         <Label x:Name="rarityLabel" Content="Rarity:" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="raritySelector" HorizontalAlignment="Left" Margin="26,229,0,0" VerticalAlignment="Top" Width="120" Initialized="raritySelector_Initialized"/>
         <Button x:Name="generateButton" Content="Generate" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="150" Height="34" Click="generateButton_Click"/>
-        <Label x:Name="testLabel" Content="Label" HorizontalAlignment="Left" Margin="253,80,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="itemTextBox" HorizontalAlignment="Left" Height="281" Margin="246,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" BorderBrush="#FF020202" Background="Transparent"/>
     </Grid>
 </Window>
