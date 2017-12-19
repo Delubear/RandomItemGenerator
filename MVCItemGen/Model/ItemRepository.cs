@@ -27,6 +27,11 @@ namespace MVCItemGen.Model
         {
             //_itemDbContext.Add(ItemGen.GetItemType(itemBaseName));
             _itemDbContext.Add(ItemGen.GetNewRandomItem());
+           
+        }
+
+        public void SaveChanges()
+        {
             _itemDbContext.SaveChanges();
         }
 

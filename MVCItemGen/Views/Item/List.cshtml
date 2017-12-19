@@ -5,31 +5,13 @@
 <ul>
     <li><a href="/Home/Index">Home</a></li>
     <li><a href="/Item/List">Item Generation</a></li>
+    <li><a href="/Item/ShowAll">All Items</a></li>
 </ul>
-
-    @*<ul>
-        <li><a href="/Home/Index">Home</a></li>
-    </ul>*@
-
-@*<script language="Javascript">
-    function isNumber(evt)
-    {
-        var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-        {
-            return false;
-        }
-        return true;
-    }
-</script>*@
-
-
-
 
 @using (Html.BeginForm())
 {
     <h5>
-        <text>Number of items to generate: </text> <br />   @*<input id="txtChar" onkeypress="return isNumber(event)" type="text" name="txtChar"  />*@    @Html.TextBoxFor(x => x.Amount, new { style = "width:100px" })
+        <text>Number of items to generate: </text> <br />   @Html.TextBoxFor(x => x.Amount, new { style = "width:100px" })
         <input type="submit" value="Generate" />
     </h5>
 

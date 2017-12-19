@@ -2,6 +2,7 @@
 using MVCItemGen.Model;
 using MVCItemGen.ViewModels;
 using System;
+using System.Linq;
 
 namespace MVCItemGen.Controllers
 {
@@ -31,7 +32,7 @@ namespace MVCItemGen.Controllers
 
         public ViewResult Generate(int amount)
         {
-            _baseItemRespository.Reset();
+            // _baseItemRespository.Reset();
             //List<Item> items ;            
             
             //items = _baseItemRespository.BaseItemRepository;
@@ -39,6 +40,12 @@ namespace MVCItemGen.Controllers
             {
                 _baseItemRespository.AddRandomItem();
             }
+            _baseItemRespository.SaveChanges();
+            return View(new ItemListViewModel { ItemList = _baseItemRespository.BaseItemRepository.TakeLast(amount).ToList(), Generating = true });
+        }
+
+        public ViewResult ShowAll()
+        {
             return View(new ItemListViewModel { ItemList = _baseItemRespository.BaseItemRepository, Generating = true });
         }
         
