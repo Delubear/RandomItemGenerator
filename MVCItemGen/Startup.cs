@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MVCItemGen.Model;
+using MVCItemGen.Model.BaseItem;
 
 namespace MVCItemGen
 {
@@ -27,8 +28,10 @@ namespace MVCItemGen
             services.AddMvc();
 
             services.AddDbContext<ItemDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
-            //services.AddDbContext<ItemDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("TestConnection")));
+            services.AddDbContext<SarahDBContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("SarahConnection")));
+            //services.AddDbContext<ItemDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("TestConnection"))); 
             services.AddTransient<IBaseItemRepository, ItemRepository>();
+            services.AddTransient<iSarahRepo, SarahRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
