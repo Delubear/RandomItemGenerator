@@ -9,5 +9,8 @@ namespace MVCItemGen.Model.BaseItem
     {
         List<SarahsItem> BaseSarahRepo { get; set; }
         void SaveChanges();
+        void Add(SarahsItem item);
+        void Update(SarahsItem item);
+        void Delete(SarahsItem item);
     }
 }

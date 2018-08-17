@@ -10,9 +10,10 @@ using System;
 namespace MVCItemGen.Migrations.SarahDB
 {
     [DbContext(typeof(SarahDBContext))]
-    partial class SarahDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180817225844_dat mods")]
+    partial class datmods
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -21,22 +21,40 @@ namespace MVCItemGen.Model
         public SarahRepo(SarahDBContext sarahDbContext)
         {
             _sarahDbContext = sarahDbContext;
-
+            
         }
 
+        private List<SarahsItem> _BaseSarahRepo;
         public List<SarahsItem> BaseSarahRepo
         {
             get
             {
                 return _sarahDbContext.SarahsItems.ToList();
             }
-            set
-            { }
+            set { }
         }
 
         public SarahRepo()
         {
+            
+        }
 
+        public void Add(SarahsItem item)
+        {
+            _sarahDbContext.SarahsItems.Add(item);
+            SaveChanges();
+        }
+
+        public void Update(SarahsItem item)
+        {
+            _sarahDbContext.SarahsItems.Update(item);
+            SaveChanges();
+        }
+
+        public void Delete(SarahsItem item)
+        {
+            _sarahDbContext.SarahsItems.Remove(item);
+            SaveChanges();
         }
     }
 }
