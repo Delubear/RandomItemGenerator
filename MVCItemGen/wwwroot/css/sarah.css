@@ -1,7 +1,7 @@
 ﻿body {
     font-family: Calibri, Verdana;
     font: Calibri, Verdana, sans-serif;
-    background-color: #eaeaea;
+    background-color: white;
     color: #191919;
 }
 
@@ -22,28 +22,7 @@ h2 {
     text-align: center;
 }
 
-h3 {
-    font-family: Calibri, Verdana;
-    font-size: medium;
-    border-bottom: 2px inset #191919;
-    font: Calibri, serif;
-    color: #191919;
-    padding-left: 8px;
-}
 
-h4 {
-    color: red;
-    font-family: Calibri, Verdana;
-    font: Calibri, Verdana, sans-serif;
-}
-
-h5 {
-    font-family: Calibri, Verdana;
-    font-size: medium;
-    font: Calibri, serif;
-    color: #191919;
-    /*padding-left: 8px;*/
-}
 
 #main {
     font-family: Calibri, Verdana;
@@ -63,12 +42,13 @@ th{
 }
 
 /* Menu Styles ------------------------------*/
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #eaeaea;
+    background-color: white;
     color: rgba(0, 0, 0, 0.4);
     
 }
@@ -80,10 +60,10 @@ li {
     border-bottom: 1px solid #555;
 }
 
-    /*li:last-child {
-        /*border-right: none;
+    li:last-child {
+        border-right: none;
         border-bottom: none;
-    }*/
+    }
 
     li a {
         display: block;
@@ -100,28 +80,18 @@ li {
         }
         
 table {
-    border: 0.01em solid black;
-    /*float: left;*/
+   
     display: inline-block;
     margin: 0.5%;
     padding: 0%;
-    /*max-width: 30%;*/
-    /*max-height: 25%;
-    min-height: 25%;
-    min-width: 25%;*/
-    /*text-size-adjust: auto;
-    font-size: 100%;
-    font-size-adjust: none;
-    resize:both;
-    flex-shrink: 1;*/
     table-layout: fixed;
     
 }
-
+    /*
 table:hover {
     /*font-size: x-large;*/
-    background-color: #83a6fa;        
-}
+    /*background-color: #83a6fa;        
+/*}
     
 
 th {
@@ -134,6 +104,7 @@ th {
     resize: both;
     flex-shrink: 1;*/
     /*border: 1px solid black;*/
+/*
 }
   
 
@@ -146,7 +117,7 @@ tr {
     resize: both;
     flex-shrink: 1;*/
     /*border: 1px solid black;*/
-}
+/*}
    
 
 td {
@@ -158,8 +129,8 @@ td {
     resize: both;
     flex-shrink: 1;*/
     /*border: 1px solid black;*/
-}
-    
+/*}
+ */   
 tr.complete {
     text-decoration: line-through;
     color: gray;
@@ -167,8 +138,8 @@ tr.complete {
 
 
 
-/*/* Data Styles ------------------------------*/
-table.data {
+/* Data Styles ------------------------------*/
+/*table.data {
     background-color: #ffffff;
     border: 1px solid #c3c3c3;
     border-collapse: collapse;
@@ -202,7 +173,7 @@ table.data {
     padding: 5px 0;
     border-radius: 6px;
     /* Position the tooltip text - see examples below! */
-    position: absolute;
+  /*  position: absolute;
     z-index: 1;
 }
 

@@ -28,7 +28,10 @@ namespace MVCItemGen.Controllers
         public IActionResult SList()
         {
             items = _baseItemRespository.BaseSarahRepo.ToList();
-            return View(items);
+            
+            List<SarahsItem> orderedList = items.Where(i => i.DateCompleted == null).ToList();
+            orderedList.AddRange(items.Where(i => i.DateCompleted != null).ToList());
+            return View(orderedList);
         }
 
         public IActionResult Create()
