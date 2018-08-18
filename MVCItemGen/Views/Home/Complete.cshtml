@@ -1,0 +1,28 @@
+﻿@model MVCItemGen.Model.SarahsItem
+@{
+    ViewData["Title"] = "Complete";
+}
+<h2>Complete</h2>
+<h4>Sarahs 'Item</h4>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Complete">
+                @Html.HiddenFor(model => model.Id)
+                <input type="hidden" asp-for="Id" />
+                @Html.DisplayFor(model => model.Name)
+                <div class="form-group">
+                    <input type="submit" value="Complete" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+<div>
+    <br /><br />
+    <button type="button" onclick="location.href='@Url.Action("SList", "Home")'">
+        Back To List
+    </button>
+</div>

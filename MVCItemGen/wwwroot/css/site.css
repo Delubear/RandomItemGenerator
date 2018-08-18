@@ -160,6 +160,10 @@ td {
     /*border: 1px solid black;*/
 }
     
+tr.complete {
+    text-decoration: line-through;
+    color: gray;
+}
 
 
 /*/* Data Styles ------------------------------*/

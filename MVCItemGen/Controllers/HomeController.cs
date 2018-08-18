@@ -119,6 +119,37 @@ namespace MVCItemGen.Controllers
             }
         }
 
+        public IActionResult Complete(string Id)
+        {
+            SarahsItem item = _baseItemRespository.BaseSarahRepo.FirstOrDefault(c => c.Id == Id);
+            if (item == null)
+            {
+                return RedirectToAction("Slist");
+            }
+            else
+            {
+                return View(item);
+            }
+        }
+
+        // [ActionName("Complete")]
+        [HttpPost]
+        public IActionResult Complete(SarahsItem item, string Id)
+        {
+            var itemToEdit = _baseItemRespository.BaseSarahRepo.FirstOrDefault(c => c.Id == Id);
+            if (itemToEdit == null)
+            {
+                return RedirectToAction("Slist");
+            }
+            else
+            {
+                itemToEdit.DateCompleted = DateTime.Today;
+                _baseItemRespository.Update(itemToEdit);
+                _baseItemRespository.SaveChanges();
+                return RedirectToAction("Slist");
+            }
+        }
+
 
 
         public void SaveList()
