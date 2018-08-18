@@ -1,57 +1,61 @@
 ﻿@model IEnumerable<MVCItemGen.Model.SarahsItem>
-
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+<ul>
+    <li><a href="/Home/Index">Home</a></li>
+    <li><a href="/Item/List">Item Generation</a></li>
+    <li><a href="/Item/ShowAll">All Items</a></li>
+    <li><a href="/Home/SList">List</a></li>
+</ul>
 @{
-    ViewData["Title"] = "SList";
+    ViewData["Title"] = "Sarah's List";
 }
-
-<h2>SList</h2>
-
+<h2>Sarah's List</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" onclick="location.href='@Url.Action("Create", "Home")'">
+        Create New
+    </button>
 </p>
-<table class="table">
-
+<table class="table" cellpadding="5">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)    
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)    
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfItem)    
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAdded)    
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCompleted)    
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TypeOfItem)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateAdded)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateCompleted)
-                </th>
-            <th></th>
-        </tr>
-
-@foreach (var item in Model) {
-        <tr>
             <td>
-                @Html.DisplayFor(model => item.Name)
+                @Html.DisplayFor(model => item.Name)    
             </td>
             <td>
-                @Html.DisplayFor(model => item.Description)
+                @Html.DisplayFor(model => item.Description)    
             </td>
             <td>
-                @Html.DisplayFor(model => item.TypeOfItem)
+                @Html.DisplayFor(model => item.TypeOfItem)    
             </td>
             <td>
-                @Html.DisplayFor(model => item.DateAdded)
+                @Html.DisplayFor(model => item.DateAdded)    
             </td>
             <td>
-                @Html.DisplayFor(model => item.DateCompleted)
+                @Html.DisplayFor(model => item.DateCompleted)    
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { Id = item.Id })
             </td>
         </tr>
-}
-
+    }
 </table>

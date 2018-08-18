@@ -1,16 +1,14 @@
 ﻿@model MVCItemGen.Model.SarahsItem
-
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
 @{
     ViewData["Title"] = "Create";
 }
-
 <h2>Create</h2>
-
-<h4>SarahsItem</h4>
+<h4>Sarah's New Item</h4>
 <hr />
 @using (Html.BeginForm())
 {
-    
+
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Create">
@@ -34,7 +32,8 @@
         </div>
     </div>
 }
-<div>
-    @Html.ActionLink("Back to list", "SList")
-</div>
-
+    <div><br /><br />
+        <button type="button" onclick="location.href='@Url.Action("SList", "Home")'">
+            Back To List
+        </button>
+    </div>

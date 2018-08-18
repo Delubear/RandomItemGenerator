@@ -12,10 +12,13 @@ namespace MVCItemGen.Model
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        [DisplayName("Type")]
         public string TypeOfItem { get; set; }
         [DataType(DataType.Date),DisplayFormat(DataFormatString ="{0:MM/dd/yy}")]
+        [DisplayName("Date Added")]
         public DateTime DateAdded { get; set; }
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
+        [DisplayName("Date Completed")]
         public DateTime? DateCompleted { get; set; }
 
         public SarahsItem()
