@@ -34,6 +34,8 @@ namespace MVCItemGen.Controllers
             return View(orderedList);
         }
 
+      
+
         public IActionResult Create()
         {
             return View();
