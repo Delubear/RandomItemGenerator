@@ -98,12 +98,8 @@ namespace MVCItemGen.Controllers.Api
 
         // DELETE: api/SarahsItems/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSarahsItem([FromRoute] string id)
+        public async Task<IActionResult> Delete([FromRoute] string id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
             var sarahsItem = await _context.SarahsItems.SingleOrDefaultAsync(m => m.Id == id);
             if (sarahsItem == null)
