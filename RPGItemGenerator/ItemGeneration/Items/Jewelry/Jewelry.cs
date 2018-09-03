@@ -6,19 +6,8 @@ namespace RPGItemGenerator.ItemGeneration
 {
     public partial class Jewelry : Item
     {
-        private string _effect = "";
-        public string Effect
-        {
-            get { return _effect; }
-            set { _effect = value; }
-        }
-
-        private JewelryType _jewelryType;
-        public JewelryType JewelryType
-        {
-            get { return _jewelryType; }
-            set { _jewelryType = value; }
-        }        
+        public string Effect { get; set; } = "";
+        public JewelryType JewelryType { get; set; }
 
         public Jewelry()
         {

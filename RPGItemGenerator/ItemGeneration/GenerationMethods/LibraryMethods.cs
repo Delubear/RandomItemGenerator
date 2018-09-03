@@ -1,16 +1,72 @@
-﻿using System.Text;
+﻿using DSharpPlus.CommandsNext;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace RPGItemGenerator.ItemGeneration
 {
     public partial class RunItemGen
     {
+        double common = 0;
+        double uncommon = 0;
+        double rare = 0;
+        double epic = 0;
+        double legendary = 0;
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder();
+        public Dictionary<string, HashSet<string>> itemBaseName = new Dictionary<string, HashSet<string>>();
+
+        public void ConsoleItemGeneration(double runAmount)
+        {
+            GenerateLists();
+
+            for (int i = 0; i < runAmount; i++)
+            {
+                Item testItem = GetItemType(itemBaseName);
+                SetTextColor(testItem);
+                AppendtemProperties(testItem);
+                PrintItemProperties(WriteToConsole: true);
+            }
+            PrintSummary(runAmount);
+            Console.ReadLine();
+        }
+
+        public void DiscordItemGeneration(CommandContext ctx = null, string rarity = "")
+        {
+            GenerateLists();
+            Item testItem = GetItemType(itemBaseName, rarity);
+            AppendtemProperties(testItem);
+            PrintItemProperties(ctx, WriteToConsole: false);
+        }
+
+        public double GetRunAmount()
+        {
+            Console.WriteLine("How many items to generate?");
+            double runAmount = 100;
+            string generateTimes = Console.ReadLine();
+            try
+            {
+                runAmount = Convert.ToDouble(generateTimes);
+            }
+            catch (Exception)
+            {
+                Environment.Exit(0);
+            }
+            return runAmount;
+        }
+
+        public void GenerateLists()
+        {
+            itemBaseName = new BaseNames(itemBaseName).itemBaseName;
+        }
+
         public Item GetNewRandomItem()
         {
             if(itemBaseName.Count < 1)
             {
                 GenerateLists();
             }
-            var _itemBaseName = itemBaseName;
+            
             return GetItemType(itemBaseName);
         }
 
@@ -20,7 +76,7 @@ namespace RPGItemGenerator.ItemGeneration
             {
                 GenerateLists();
             }
-            var _itemBaseName = itemBaseName;
+            
             return GetItemType(itemBaseName, rarity);
         }
 
