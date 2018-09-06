@@ -3,7 +3,7 @@ using static RPGItemGenerator.ItemGeneration.Enums;
 
 namespace RPGItemGenerator.ItemGeneration
 {
-    public partial class BaseNames
+    public class BaseNames
     {
         public void GenerateRangedWeaponBaseNames()
         {

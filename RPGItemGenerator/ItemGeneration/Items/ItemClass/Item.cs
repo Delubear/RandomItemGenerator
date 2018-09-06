@@ -7,7 +7,7 @@ using static RPGItemGenerator.ItemGeneration.Enums;
 
 namespace RPGItemGenerator.ItemGeneration
 {
-    public abstract partial class Item
+    public abstract class Item
     {
         private string GetNewBaseName()
         {
@@ -86,28 +86,28 @@ namespace RPGItemGenerator.ItemGeneration
             return result;
         }
 
-        private string GetTypeOf(Item itm)
+        private string GetTypeOf(Item item)
         {
             string type = "";
 
             if (ItemType == ItemTypes.Weapon)
             {
-                var wpnType = itm.GetType().GetProperty("WeaponType").GetValue(itm);
+                var wpnType = item.GetType().GetProperty("WeaponType").GetValue(item);
                 type = wpnType.ToString();
             }
             else if (ItemType == ItemTypes.Armor)
             {
-                var armType = itm.GetType().GetProperty("ArmorType").GetValue(itm);
+                var armType = item.GetType().GetProperty("ArmorType").GetValue(item);
                 type = armType.ToString();
             }
             else if (ItemType == ItemTypes.Jewelry)
             {
-                var jewelryType = itm.GetType().GetProperty("JewelryType").GetValue(itm);
+                var jewelryType = item.GetType().GetProperty("JewelryType").GetValue(item);
                 type = jewelryType.ToString();
             }
             else
             {
-                type = itm.GetType().GetProperty("ItemType").GetValue(itm).ToString();
+                type = item.GetType().GetProperty("ItemType").GetValue(item).ToString();
             }
 
             return type;
@@ -142,9 +142,7 @@ namespace RPGItemGenerator.ItemGeneration
                     var newProp = (SecondaryProperties)Activator.CreateInstance(type);
 
                     if (!SecondaryProps.ContainsKey(pc.Value))
-                    {
                         SecondaryProps.Add(pc.Value, newProp);
-                    }
 
                     var temp = propertyCreator.Where(m => m.Value == pc.Value).ToList();
                     foreach (var tmp in temp)
@@ -154,7 +152,6 @@ namespace RPGItemGenerator.ItemGeneration
                 }
             }
         }
-
 
         protected void GetNewSecondaryProperty(Item itm)
         {
@@ -200,7 +197,6 @@ namespace RPGItemGenerator.ItemGeneration
             if (x < 0) { x = 0; }
             return x;
         }
-
 
         protected Dictionary<string, HashSet<string>> ItemBaseNames;
 
@@ -332,10 +328,8 @@ namespace RPGItemGenerator.ItemGeneration
             }
 
             CurrentDurability = (int)y;
-
             AdjustValueBasedOnDurability();
         }
-
 
         StringBuilder sb = new StringBuilder();
         protected string GetNewDescription()
@@ -351,21 +345,13 @@ namespace RPGItemGenerator.ItemGeneration
         private void SetDescEnding()
         {
             if (Value < 10)
-            {
                 sb.Append("made from poor materials.");
-            }
             else if (Value < 50)
-            {
                 sb.Append("marked with quality stamps of approval.");
-            }
             else if (Value < 100)
-            {
                 sb.Append("set with sparkling gemstones.");
-            }
             else
-            {
                 sb.Append("coated in gold and gems.  Truly a symbol of wealth and power.");
-            }
         }
 
         private void SetDescAdjectives()

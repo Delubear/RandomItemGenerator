@@ -72,18 +72,17 @@
   <ItemGroup>
     <Compile Include="Discord\CommandsItemGen.cs" />
     <Compile Include="Discord\MainAsyncDiscord.cs" />
-    <Compile Include="ItemGeneration\GenerationMethods\LibraryMethods.cs" />
     <Compile Include="ItemGeneration\GenerationMethods\RunItemGenMethods.cs" />
     <Compile Include="ItemGeneration\GenerationMethods\UIDesignerCalls.cs" />
     <Compile Include="ItemGeneration\Items\BellCurve.cs" />
     <Compile Include="ItemGeneration\Enums.cs" />
     <Compile Include="ItemGeneration\Items\Armor\Armor.cs" />
-    <Compile Include="ItemGeneration\Items\ItemClass\Descriptions.cs" />
+    <Compile Include="ItemGeneration\Items\ItemClass\Item.cs" />
     <Compile Include="ItemGeneration\Items\Jewelry\Jewelry.cs" />
     <Compile Include="ItemGeneration\Items\Potions\Potions.cs" />
     <Compile Include="ItemGeneration\Items\SecondaryProperties.cs" />
-    <Compile Include="ItemGeneration\Items\Weapons\Accuracy.cs" />
-    <Compile Include="ItemGeneration\Naming\ArmorBaseNames.cs" />
+    <Compile Include="ItemGeneration\Items\Weapons\Weapons.cs" />
+    <Compile Include="ItemGeneration\Naming\BaseNames.cs" />
     <Compile Include="ItemGeneration\SecondaryProperties\ArmorSecondaryProperties.cs" />
     <Compile Include="ItemGeneration\SecondaryProperties\PropertyClasses\Aging\Ancient.cs" />
     <Compile Include="ItemGeneration\SecondaryProperties\PropertyClasses\ArmorTypes\Leather.cs" />

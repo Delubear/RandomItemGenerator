@@ -15,8 +15,7 @@ namespace RPGItemGenerator.ItemGeneration.GenerationMethods
             itemBaseName = new BaseNames(itemBaseName).itemBaseName;
             string[] seperatedResults = input.Split(';');
 
-            Rarity rarity = (Rarity)Enum.Parse(typeof(Rarity),seperatedResults[0]);           
-                 
+            Rarity rarity = (Rarity)Enum.Parse(typeof(Rarity),seperatedResults[0]);   
             
             if(seperatedResults[1] == "Weapon")
             {

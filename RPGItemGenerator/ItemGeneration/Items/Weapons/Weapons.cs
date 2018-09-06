@@ -4,7 +4,7 @@ using static RPGItemGenerator.ItemGeneration.Enums;
 
 namespace RPGItemGenerator.ItemGeneration
 {
-    public partial class Weapons : Item
+    public class Weapons : Item
     {
         private void GetWeaponTypes()
         {
@@ -23,7 +23,6 @@ namespace RPGItemGenerator.ItemGeneration
             }
         }
 
-
         public int DamageValue { get; set; }
         public DamageTypes DamageType { get; set; }
         public WeaponsType WeaponType { get; set; }
@@ -31,63 +30,63 @@ namespace RPGItemGenerator.ItemGeneration
         public double Accuracy { get; set; }
 
         public Weapons()
-            {
+        {
 
-            }
+        }
 
-            public Weapons(Dictionary<string, HashSet<string>> itemBaseName)
-            {
-                ID = new Guid();
-                this.ItemBaseNames = itemBaseName;
-                Rarity = GetRarity();
-                ItemType = ItemTypes.Weapon;
-                GetWeaponTypes();
-                GenerateAccuracy();
-                GetDamageTypes();  //Needs to run before Secondary Prop generation so the properties can overwrite
-                Value = GetNewValue();  //Needs to run before Secondary Prop generation so the properties can adjust
-                DamageValue = GetNewDamageValue();//Needs to run before Secondary Prop generation so the properties can adjust            
-                GetDurability();
-                GetNewSecondaryProperty(this);
-                Name = GetNewName();  //Needs to run after SecondaryProperties
-                Description = GetNewDescription();
-            }
+        public Weapons(Dictionary<string, HashSet<string>> itemBaseName)
+        {
+            ID = new Guid();
+            this.ItemBaseNames = itemBaseName;
+            Rarity = GetRarity();
+            ItemType = ItemTypes.Weapon;
+            GetWeaponTypes();
+            GenerateAccuracy();
+            GetDamageTypes();  //Needs to run before Secondary Prop generation so the properties can overwrite
+            Value = GetNewValue();  //Needs to run before Secondary Prop generation so the properties can adjust
+            DamageValue = GetNewDamageValue();//Needs to run before Secondary Prop generation so the properties can adjust            
+            GetDurability();
+            GetNewSecondaryProperty(this);
+            Name = GetNewName();  //Needs to run after SecondaryProperties
+            Description = GetNewDescription();
+        }
 
-            public Weapons(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare)
-            {
-                ID = new Guid();
-                this.ItemBaseNames = itemBaseName;
-                Rarity = rare;
-                ItemType = ItemTypes.Weapon;
-                GetWeaponTypes();
-                GenerateAccuracy();
-                GetDamageTypes();
-                Value = GetNewValue();
-                DamageValue = GetNewDamageValue();
-                GetDurability();
-                GetNewSecondaryProperty(this);
-                Name = GetNewName();
-                Description = GetNewDescription();
-            }
+        public Weapons(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare)
+        {
+            ID = new Guid();
+            this.ItemBaseNames = itemBaseName;
+            Rarity = rare;
+            ItemType = ItemTypes.Weapon;
+            GetWeaponTypes();
+            GenerateAccuracy();
+            GetDamageTypes();
+            Value = GetNewValue();
+            DamageValue = GetNewDamageValue();
+            GetDurability();
+            GetNewSecondaryProperty(this);
+            Name = GetNewName();
+            Description = GetNewDescription();
+        }
 
-            public Weapons(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare, WeaponCategory wCat, WeaponsType wType)
-            {
-                ID = new Guid();
-                this.ItemBaseNames = itemBaseName;
-                Rarity = rare;
-                ItemType = ItemTypes.Weapon;
-                WeaponCat = wCat;
-                WeaponType = wType;
-                GenerateAccuracy();
-                GetDamageTypes();
-                Value = GetNewValue();
-                DamageValue = GetNewDamageValue();
-                GetDurability();
-                GetNewSecondaryProperty(this);
-                Name = GetNewName();
-                Description = GetNewDescription();
-            }
+        public Weapons(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare, WeaponCategory wCat, WeaponsType wType)
+        {
+            ID = new Guid();
+            this.ItemBaseNames = itemBaseName;
+            Rarity = rare;
+            ItemType = ItemTypes.Weapon;
+            WeaponCat = wCat;
+            WeaponType = wType;
+            GenerateAccuracy();
+            GetDamageTypes();
+            Value = GetNewValue();
+            DamageValue = GetNewDamageValue();
+            GetDurability();
+            GetNewSecondaryProperty(this);
+            Name = GetNewName();
+            Description = GetNewDescription();
+        }
 
-            private int GetNewDamageValue()
+        private int GetNewDamageValue()
         {
             double median = 0;
             double deviation = 0;
@@ -191,13 +190,9 @@ namespace RPGItemGenerator.ItemGeneration
             }
 
             if(Accuracy > 1)
-            {
                 Accuracy = 1;
-            }
             else if(Accuracy < 0.1)
-            {
                 Accuracy = 0.1;
-            }
         }        
     }
 }

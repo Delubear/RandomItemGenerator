@@ -4,7 +4,7 @@ using static RPGItemGenerator.ItemGeneration.Enums;
 
 namespace RPGItemGenerator.ItemGeneration
 {
-    public partial class Jewelry : Item
+    public class Jewelry : Item
     {
         public string Effect { get; set; } = "";
         public JewelryType JewelryType { get; set; }
@@ -27,7 +27,6 @@ namespace RPGItemGenerator.ItemGeneration
             Name = GetNewName();  
             Description = GetNewDescription();
         }
-
 
         public Jewelry(Dictionary<string, HashSet<string>> itemBaseName, Rarity rare)
         {

@@ -4,7 +4,7 @@ using static RPGItemGenerator.ItemGeneration.Enums;
 
 namespace RPGItemGenerator.ItemGeneration
 {
-    public partial class Armor : Item
+    public class Armor : Item
     {
         public int ArmorValue { get; set; }
         public ArmorTypes ArmorType { get; set; }
