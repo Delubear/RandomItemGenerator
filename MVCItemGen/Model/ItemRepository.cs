@@ -9,15 +9,9 @@ namespace MVCItemGen.Model
     {
         public ItemDbContext _itemDbContext;
 
-        //Dictionary<string, HashSet<string>> itemBaseName;
-
         public ItemRepository(ItemDbContext itemDbContext)
         {
             _itemDbContext = itemDbContext;
-
-            //var g = new RunItemGen();
-            //g.GenerateLists();
-            //itemBaseName = g.itemBaseName;
         }
 
         Random r = new Random();
@@ -25,9 +19,7 @@ namespace MVCItemGen.Model
 
         public void AddRandomItem()
         {
-            //_itemDbContext.Add(ItemGen.GetItemType(itemBaseName));
-            _itemDbContext.Add(ItemGen.GetNewRandomItem());
-           
+            _itemDbContext.Add(ItemGen.GetNewRandomItem());           
         }
 
         public void SaveChanges()

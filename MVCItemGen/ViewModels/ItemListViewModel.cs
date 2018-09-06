@@ -10,9 +10,7 @@ namespace MVCItemGen.ViewModels
         
         [Required]
         public string Amount { get; set; }        
-
         public bool Failure { get; set; }
-
         public bool Generating { get; set; }
     }
 }

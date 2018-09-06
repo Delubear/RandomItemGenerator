@@ -11,7 +11,6 @@ namespace RPGItemGenerator.ItemGeneration
 
         public Armor()
         {
-
         }
 
         private int GetNewArmorValue()

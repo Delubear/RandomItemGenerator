@@ -8,20 +8,16 @@ namespace MVCItemGen.Model
 {
     public class SarahRepo : iSarahRepo
     {
-        // public List<SarahsItem> BaseSarahRepo => throw new NotImplementedException();
-
         public void SaveChanges()
         {
             _sarahDbContext.SaveChanges();
         }
 
-
         public SarahDBContext _sarahDbContext;
         
         public SarahRepo(SarahDBContext sarahDbContext)
         {
-            _sarahDbContext = sarahDbContext;
-            
+            _sarahDbContext = sarahDbContext;            
         }
 
         private List<SarahsItem> _BaseSarahRepo;

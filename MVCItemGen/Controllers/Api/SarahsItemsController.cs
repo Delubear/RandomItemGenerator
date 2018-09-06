@@ -32,16 +32,12 @@ namespace MVCItemGen.Controllers.Api
         public async Task<IActionResult> GetSarahsItem([FromRoute] string id)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             var sarahsItem = await _context.SarahsItems.SingleOrDefaultAsync(m => m.Id == id);
 
             if (sarahsItem == null)
-            {
                 return NotFound();
-            }
 
             return Ok(sarahsItem);
         }
@@ -52,28 +48,13 @@ namespace MVCItemGen.Controllers.Api
         {            
             SarahsItem itemToUpdate = _context.SarahsItems.FirstOrDefault(i => i.Id == id);
             
-            
             itemToUpdate.Name = sarahsItem.Name;
             itemToUpdate.Description = sarahsItem.Description;
             itemToUpdate.DateAdded = sarahsItem.DateAdded;
             itemToUpdate.DateCompleted = sarahsItem.DateCompleted;
             itemToUpdate.TypeOfItem = sarahsItem.TypeOfItem;
-            if(itemToUpdate.DateCompleted == null)
-            {
-                //itemToUpdate.DateCompleted = DateTime.Today;
-            }
-            
-            // sarahsItem.DateCompleted = DateTime.Today;
 
-            //_context.SarahsItems.Update(itemToUpdate);
-            //_context.SarahsItems.Update(sarahsItem);
-            //_context.Update(itemToUpdate);
-            //_context.Update(sarahsItem);
-            //_context.Entry(sarahsItem).State = EntityState.Modified;
-            //_context.Entry(itemToUpdate).State = EntityState.Modified;
-            // _context.SarahsItems.(itemToUpdate);
             await _context.SaveChangesAsync();
-
             return Ok(itemToUpdate);
         }
 
@@ -81,7 +62,6 @@ namespace MVCItemGen.Controllers.Api
         [HttpPost]
         public async Task<IActionResult> PostSarahsItem([FromForm] SarahsItem sarahsItem)
         {
-
             SarahsItem newItem = new SarahsItem();
             newItem.Id = sarahsItem.Id;
             newItem.Name = sarahsItem.Name;
@@ -99,16 +79,12 @@ namespace MVCItemGen.Controllers.Api
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] string id)
         {
-
             var sarahsItem = await _context.SarahsItems.SingleOrDefaultAsync(m => m.Id == id);
             if (sarahsItem == null)
-            {
                 return NotFound();
-            }
 
             _context.SarahsItems.Remove(sarahsItem);
             await _context.SaveChangesAsync();
-
             return Ok(sarahsItem);
         }
 

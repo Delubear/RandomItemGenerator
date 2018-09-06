@@ -1,18 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVCItemGen.Model;
-using MVCItemGen.Model.BaseItem;
-using MVCItemGen.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 
 namespace MVCItemGen.Controllers
 {
     public class HomeController : Controller
     {
         private readonly SarahDBContext _context;
-        private iSarahRepo _baseItemRespository;
+
         public HomeController(SarahDBContext context)
         {
             _context = context;
@@ -23,20 +20,15 @@ namespace MVCItemGen.Controllers
         public IActionResult Index()
         {
             return View();
-            //return RedirectToAction("List", "Item");
         }     
         
         public IActionResult SList()
         {
-
-            items = _context.SarahsItems.ToList();
-            
+            items = _context.SarahsItems.ToList();            
             List<SarahsItem> orderedList = items.Where(i => i.DateCompleted == null).ToList();
             orderedList.AddRange(items.Where(i => i.DateCompleted != null).ToList());
             return View(orderedList);
-        }
-
-      
+        }      
 
         public IActionResult Create()
         {
@@ -46,12 +38,6 @@ namespace MVCItemGen.Controllers
         [HttpPost]
         public IActionResult Create(SarahsItem item)
         {
-            /*
-            if (!ModelState.IsValid)
-            {
-                return View(item);
-            }
-            */
             items = _context.SarahsItems.ToList();
 
             item.Id = Guid.NewGuid().ToString();
@@ -67,13 +53,9 @@ namespace MVCItemGen.Controllers
         {
             SarahsItem item = _context.SarahsItems.FirstOrDefault(c => c.Id == Id);
             if(item == null)
-            {
-                return RedirectToAction("Slist");
-            }
+                return RedirectToAction("Slist");            
             else
-            {
                 return View(item);
-            }
         }
 
         [HttpPost]
@@ -81,9 +63,7 @@ namespace MVCItemGen.Controllers
         {
             var itemToEdit =_context.SarahsItems.FirstOrDefault(c => c.Id == Id);
             if(itemToEdit == null)
-            {
                 return RedirectToAction("Slist");
-            }
             else
             {
                 itemToEdit.Name = item.Name;
@@ -91,23 +71,17 @@ namespace MVCItemGen.Controllers
                 itemToEdit.TypeOfItem = item.TypeOfItem;
                 _context.SarahsItems.Update(itemToEdit);
                 _context.SaveChanges();
-                return RedirectToAction("Slist");
-                
+                return RedirectToAction("Slist");                
             }
         }
 
-
         public ActionResult Delete(string Id)
         {
-            SarahsItem item = _baseItemRespository.BaseSarahRepo.FirstOrDefault(c => c.Id == Id);
+            SarahsItem item = _context.SarahsItems.FirstOrDefault(c => c.Id == Id);
             if (item == null)
-            {
                 return RedirectToAction("Slist");
-            }
             else
-            {
                 return View(item);
-            }
         }
 
         [ActionName("Delete")]
@@ -116,9 +90,7 @@ namespace MVCItemGen.Controllers
         {
             SarahsItem item = _context.SarahsItems.FirstOrDefault(c => c.Id == Id);
             if (item == null)
-            {
                 return RedirectToAction("Slist");
-            }
             else
             {
                 _context.SarahsItems.Remove(item);
@@ -130,24 +102,17 @@ namespace MVCItemGen.Controllers
         {
             SarahsItem item = _context.SarahsItems.FirstOrDefault(c => c.Id == Id);
             if (item == null)
-            {
                 return RedirectToAction("Slist");
-            }
             else
-            {
                 return View(item);
-            }
         }
 
-        // [ActionName("Complete")]
         [HttpPost]
         public IActionResult Complete(SarahsItem item, string Id)
         {
             var itemToEdit = _context.SarahsItems.FirstOrDefault(c => c.Id == Id);
             if (itemToEdit == null)
-            {
                 return RedirectToAction("Slist");
-            }
             else
             {
                 itemToEdit.DateCompleted = DateTime.Today;
@@ -159,8 +124,7 @@ namespace MVCItemGen.Controllers
 
         public void SaveList()
         {
-            _context.SaveChanges();
-            
+            _context.SaveChanges();            
         }
     }
 }

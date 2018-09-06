@@ -12,30 +12,18 @@ namespace MVCItemGen.Controllers
         public ItemController(IBaseItemRepository baseItemRepository)
         {
             _baseItemRespository = baseItemRepository;
-        }
-        
+        }        
 
         public ActionResult List(bool retry = false)
         {
-            //List<Item> items;
-            //items = _baseItemRespository.BaseItemRepository; 
             if(retry == false)
-            {
                 return View(new ItemListViewModel { Failure = false, Generating = false });
-            }
             else
-            {
-                return View(new ItemListViewModel { Failure = true, Generating = false });
-            }
-            
+                return View(new ItemListViewModel { Failure = true, Generating = false });            
         }
 
         public ViewResult Generate(int amount)
         {
-            // _baseItemRespository.Reset();
-            //List<Item> items ;            
-            
-            //items = _baseItemRespository.BaseItemRepository;
             for(int i = 0; i < amount; i++)
             {
                 _baseItemRespository.AddRandomItem();
@@ -55,7 +43,7 @@ namespace MVCItemGen.Controllers
             if (ModelState.IsValid)
             {
                 int outParse;
-                if(Int32.TryParse(ilvm.Amount, out outParse))
+                if(int.TryParse(ilvm.Amount, out outParse))
                 {
                     var myint = Convert.ToInt32(ilvm.Amount);
                     return RedirectToAction("Generate", new { amount = myint });
@@ -63,8 +51,7 @@ namespace MVCItemGen.Controllers
                 else
                 {
                     return RedirectToAction("List", new { retry = true });
-                }
-                
+                }                
             }
             return View();
         }

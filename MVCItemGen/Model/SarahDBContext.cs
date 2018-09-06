@@ -23,8 +23,6 @@ namespace MVCItemGen.Model
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<SarahsItem>();
-
-
             base.OnModelCreating(builder);
         }
     }

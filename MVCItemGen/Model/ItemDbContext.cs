@@ -46,7 +46,6 @@ namespace MVCItemGen.Model
             builder.Entity<Strength>();
             builder.Entity<Vitality>();
 
-
             base.OnModelCreating(builder);
         }
 
